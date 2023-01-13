@@ -1,0 +1,10 @@
+.pdfptint {
+  position: absolute;
+}
+h1 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  border-top: 5px;
+  border-bottom: 5px;
+}

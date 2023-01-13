@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useContext } from "react";
+import Link from "./components/Link";
+import Route from "./components/Route";
+import "./App.css";
+import Translate from "./components/Translate";
+import Button from "./components/button";
+import { BUTTON_TYPES } from "./common/data/button";
+import { ReactComponent as Logo } from "./wordsack.svg";
+import HireExperts from "./components/hire-experts";
+import WordCounter from "./components/WordCounter";
+import TranslationContext from "./context/Translation";
 
 function App() {
+  const { inputText, inputTextWords, setInputTextWords } =
+    useContext(TranslationContext);
+
+  const onButtonClick = () => {
+    if (inputText.length > 0) {
+      setInputTextWords(WordCounter({ text: inputText }));
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route path="/">
+        <Translate />
+
+        <Link to={"/hire-experts"}>
+          <Button
+            type={BUTTON_TYPES.PRIMARY}
+            btnText={"Hire Experts"}
+            iconPos="LEFT"
+            onButtonClick={onButtonClick}
+          />
+        </Link>
+        <Link to={"/"}>
+          <Logo className="logo" />
+        </Link>
+      </Route>
+      <Route path="/hire-experts">
+        <HireExperts />
+        <Link to={"/"}>
+          <Logo className="logo" />
+        </Link>
+      </Route>
     </div>
   );
 }

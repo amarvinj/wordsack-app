@@ -1,0 +1,200 @@
+@import "../../common/styles/variables.css";
+
+.button {
+  margin: 6px 0px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 5vw;
+  top: 24px;
+}
+
+.primaryBtn {
+  background-color: var(--purple);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 1.2px;
+}
+
+.secondaryBtn {
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 1.2px;
+  color: var(--gray);
+  background-color: var(--white);
+  border: 1px solid #ccd4d3;
+}
+
+.tertiaryBtn {
+  padding: 12px 24px;
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 1.2px;
+  color: var(--gray);
+}
+
+.primaryBtn:hover {
+  transform: scale(1.005);
+}
+
+.secondaryBtn:hover {
+  background-color: var(--background);
+}
+
+.tertiaryBtn:hover {
+  color: var(--purple);
+}
+
+.proceed-to-payment {
+  position: relative;
+
+  right: 0;
+  top: 0;
+}
+
+.packageBtn {
+  position: relative;
+
+  right: 0;
+  top: 0;
+  margin: 11px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px;
+  gap: 8px;
+
+  width: 163.33px;
+  height: 44px;
+
+  background: #ffffff;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+}
+
+.packageBtn:hover {
+  background: #f8f2ff;
+}
+
+.selected-package {
+  border: 1px solid #731be3;
+  border-radius: 5px;
+  color: #731be3;
+  background: #f8f2ff;
+}
+
+.daysBtn {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 12px;
+  gap: 8px;
+
+  width: 44px;
+  height: 44px;
+
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+
+  color: rgba(18, 19, 18, 0.4);
+
+  right: 0;
+  top: 0;
+
+  position: relative;
+}
+
+.GetStarted {
+  width: 39vw;
+  height: 9vh;
+  position: relative;
+  right: 0;
+  margin-top: 104px;
+  /* left: 30vw;
+  top: 630px; */
+}
+
+.contact {
+  /* top: 710px;
+  left: 31.5vw; */
+  position: relative;
+  right: 0;
+  width: 36.5vw;
+}
+
+.add-more {
+  position: relative;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 8px;
+  right: 0;
+
+  width: 264px;
+  height: 72px;
+}
+
+.okey {
+  position: relative;
+  margin-right: 12px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+  right: 0;
+
+  width: 286px;
+  height: 72px;
+
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+}
+
+.details-to-payment {
+  position: relative;
+  margin-top: 54px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  gap: 8px;
+
+  width: 560px;
+  height: 72px;
+  /* left: 476px;
+  top: 730px; */
+
+  right: 0;
+}

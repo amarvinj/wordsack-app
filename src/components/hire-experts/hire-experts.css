@@ -1,0 +1,451 @@
+@import "../../common/styles/variables.css";
+
+.hire-expert {
+  background-color: var(--liteGray);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.select-file {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+}
+
+.upload-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.file-upload {
+  background-color: var(--white);
+  aspect-ratio: 2/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  border: dashed 2px #ddcfed;
+  margin-top: 48px;
+
+  position: relative;
+  width: 39vw;
+  height: 18vh;
+  /* top: 420px;
+  left: 30vw; */
+}
+
+.file-upload input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-upload:hover,
+.file-upload.dragover {
+  opacity: 0.6;
+  border: dashed 2px #731be3;
+}
+
+.file-upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.file-uploaded {
+  background-color: #f8f2ff;
+  width: 39vw;
+  height: 18vh;
+  aspect-ratio: 2/1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: dashed 2px var(--purple);
+  margin-top: 48px;
+
+  position: relative;
+  /* top: 420px;
+  left: 30vw; */
+}
+
+.file-uploaded input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.translation-selected {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: dashed 2px #731be3;
+  border-radius: 5px;
+  gap: 16px;
+
+  width: 39vw;
+  height: 18vh;
+  aspect-ratio: 2/1;
+
+  background: #f8f2ff;
+
+  position: relative;
+  /* top: 230px;
+  left: 30vw; */
+}
+.non {
+  border: dashed 2px #ddcfed;
+}
+
+.select-files-h1 {
+  font-family: Avenir Next;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 18px;
+  margin-bottom: 16px;
+
+  color: #121312;
+}
+
+.select-files-h2 {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(18, 19, 18, 0.4);
+}
+
+.select-files-h3 {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 60px;
+
+  text-align: center;
+  color: #121312;
+}
+
+.select-files-h4 {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 180%;
+  /* or 180% */
+
+  text-align: center;
+
+  width: 560px;
+}
+
+.translation-selected .select-files-h1 {
+  color: #731be3;
+}
+
+.file-uploaded .select-files-h1 {
+  color: var(--purple);
+}
+
+.non .select-files-h1 {
+  color: #121312;
+}
+
+.non svg {
+  stroke: #121312;
+}
+
+.less-count {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  top: 35%;
+}
+
+.word-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+}
+
+.print-error {
+  position: absolute;
+
+  color: red;
+  margin-top: 10px;
+}
+
+.print-error.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.print-error.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px) 3000ms;
+  transition: var(--speed) ease;
+}
+
+span {
+  position: absolute;
+  right: 0px;
+  bottom: -40px;
+  /* right: -190px; */
+}
+
+.progress-bar-container {
+  position: absolute;
+  width: 99.69%;
+  bottom: 0px;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  align-items: center;
+
+  /* top: calc(50% - 4px / 2 + 71px); */
+
+  background: #f7f0ff;
+  border-radius: 2px;
+}
+
+.container .progress-bar {
+  position: absolute;
+  border-radius: 2px;
+  height: 100%;
+  background-color: #731be3;
+  visibility: visible;
+  opacity: 100%;
+}
+
+.progress-bar .hidden {
+  visibility: hidden;
+  opacity: 0%;
+}
+
+.show-animation {
+  animation: progress-animation 1000ms forwards;
+}
+
+@keyframes progress-animation {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.title-bar {
+  width: 630px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  top: 5%;
+  width: 630px;
+}
+
+.selected {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--purple);
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  text-align: center;
+}
+
+.selected svg {
+  stroke: var(--purple);
+}
+
+.upcoming {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  color: rgba(18, 19, 18, 0.4);
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  text-align: center;
+}
+
+.upcoming svg {
+  stroke: rgba(18, 19, 18, 0.4);
+}
+
+.previous {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  color: #731be3;
+  opacity: 40%;
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  text-align: center;
+  cursor: pointer;
+}
+
+.previous svg {
+  stroke: #731be3;
+}
+
+.title-bar-progress-bar-conrainer {
+  position: absolute;
+  bottom: -55%;
+  left: -2%;
+  width: 104%;
+  height: 4px;
+  align-items: center;
+
+  background: #f7f0ff;
+  border-radius: 2px;
+}
+
+.title-bar-progress-bar-conrainer .title-bar-progress-bar {
+  position: absolute;
+  border-radius: 2px;
+  height: 100%;
+  background-color: #731be3;
+  visibility: visible;
+  opacity: 100%;
+  width: 23%;
+}
+
+.forward-animation-2 {
+  animation: animation-forward-2 1000ms forwards;
+}
+
+@keyframes animation-forward-2 {
+  0% {
+    width: 23%;
+  }
+  100% {
+    width: 49%;
+  }
+}
+
+.backward-animation-2 {
+  animation: animation-backward-2 1000ms forwards;
+}
+
+@keyframes animation-backward-2 {
+  0% {
+    width: 49%;
+  }
+  100% {
+    width: 23%;
+  }
+}
+
+.forward-animation-3 {
+  animation: animation-forward-3 1000ms forwards;
+}
+
+@keyframes animation-forward-3 {
+  0% {
+    width: 49%;
+  }
+  100% {
+    width: 75%;
+  }
+}
+
+.backward-animation-3 {
+  animation: animation-backward-3 1000ms forwards;
+}
+
+@keyframes animation-backward-3 {
+  0% {
+    width: 75%;
+  }
+  100% {
+    width: 49%;
+  }
+}
+
+.backward-animation-3-to-1 {
+  animation: animation-backward-3-to-1 1000ms forwards;
+}
+
+@keyframes animation-backward-3-to-1 {
+  0% {
+    width: 75%;
+  }
+  100% {
+    width: 23%;
+  }
+}

@@ -1,0 +1,93 @@
+@import "../../common/styles/variables.css";
+
+.heading {
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--purple);
+  margin-bottom: 32px;
+  position: absolute;
+  margin-left: 88px;
+  margin-top: 24px;
+  font-family: "Avenir Next";
+}
+.dropdown {
+  display: flex;
+  position: absolute;
+  width: 145px;
+  height: 44px;
+  left: 6vw;
+  top: 216px;
+}
+
+.dropdown-label {
+  margin-top: 16px;
+  font-size: 24px;
+}
+
+.dropdown-component {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--white);
+
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  color: var(--fadedGray);
+  margin-top: 16px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.dropdown-length {
+  width: 20%;
+}
+
+.selected-options-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.dropdown-options {
+  position: absolute;
+  bottom: -10px;
+  left: 0px;
+  transform: translateY(100%);
+  background-color: var(--white);
+  width: 100%;
+  border-radius: 0px 0px 5px 5px;
+  max-height: 310px;
+  overflow: scroll;
+}
+
+.dropdown-option {
+  padding: 12px;
+}
+
+.text-color {
+  color: var(--purple);
+}
+
+.border-on {
+  border-width: thin;
+  border-style: solid;
+  border-color: #efefef;
+}
+
+.dropdown-option:hover {
+  color: var(--white);
+  background-color: var(--purple);
+}
+
+@media only screen and (max-width: 600px) {
+  .heading {
+    font-size: 20px;
+  }
+
+  .dropdown-label {
+    font-size: 14px;
+  }
+}
