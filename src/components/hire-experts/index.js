@@ -1,6 +1,4 @@
-import React, { useContext, useState } from "react";
-import HireExpertsContext from "../../context/HireExperts";
-import TranslationContext from "../../context/Translation";
+import React, { useState } from "react";
 import Button from "../button";
 import { BUTTON_TYPES } from "../../common/data/button";
 import {
@@ -18,9 +16,6 @@ import Payment from "./Payment";
 import TitleBar from "./TitleBar";
 
 function HireExperts() {
-  const { file, setFile } = useContext(HireExpertsContext);
-  const { TranslationSelected } = useContext(TranslationContext);
-
   const [page, setPage] = useState(1);
   const [previousPage, setPreviousPage] = useState(0);
   const [progressBarClassName, setProgressBarClassName] = useState(

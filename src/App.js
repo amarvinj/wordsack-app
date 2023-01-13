@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Link from "./components/Link";
 import Route from "./components/Route";
 import "./App.css";
@@ -11,8 +11,7 @@ import WordCounter from "./components/WordCounter";
 import TranslationContext from "./context/Translation";
 
 function App() {
-  const { inputText, inputTextWords, setInputTextWords } =
-    useContext(TranslationContext);
+  const { inputText, setInputTextWords } = useContext(TranslationContext);
 
   const onButtonClick = () => {
     if (inputText.length > 0) {
