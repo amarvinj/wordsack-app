@@ -26,12 +26,10 @@ function Convert({ language, text, translated, setTranslated }) {
           params: {
             q: debouncedText,
             target: language.value,
-            key: "AIzaSyDfr8quOrmhLX1yyXJnImr-wRJdit5jWOY",
+            key: "AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM",
           },
         }
       );
-
-      //key: "AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM",
 
       setTranslated(data.data.translations[0].translatedText);
     };
