@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wordsack-app/static/css/main.afd91a1a.css",
-    "main.js": "/wordsack-app/static/js/main.f1cffb5c.js",
+    "main.js": "/wordsack-app/static/js/main.e174bdd8.js",
     "static/js/236.13855618.chunk.js": "/wordsack-app/static/js/236.13855618.chunk.js",
     "static/js/703.faeb29ce.chunk.js": "/wordsack-app/static/js/703.faeb29ce.chunk.js",
     "static/js/97.0351f1e5.chunk.js": "/wordsack-app/static/js/97.0351f1e5.chunk.js",
@@ -9,13 +9,13 @@
     "static/media/wordsack.svg": "/wordsack-app/static/media/wordsack.94d1af02227869b49222101c50ea5091.svg",
     "index.html": "/wordsack-app/index.html",
     "main.afd91a1a.css.map": "/wordsack-app/static/css/main.afd91a1a.css.map",
-    "main.f1cffb5c.js.map": "/wordsack-app/static/js/main.f1cffb5c.js.map",
+    "main.e174bdd8.js.map": "/wordsack-app/static/js/main.e174bdd8.js.map",
     "236.13855618.chunk.js.map": "/wordsack-app/static/js/236.13855618.chunk.js.map",
     "703.faeb29ce.chunk.js.map": "/wordsack-app/static/js/703.faeb29ce.chunk.js.map",
     "97.0351f1e5.chunk.js.map": "/wordsack-app/static/js/97.0351f1e5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.afd91a1a.css",
-    "static/js/main.f1cffb5c.js"
+    "static/js/main.e174bdd8.js"
   ]
 }
