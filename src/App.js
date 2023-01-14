@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <Route path="/wordsack-app/">
+      <Route path="/">
         <Translate />
 
         <Link to={"/hire-experts"}>
@@ -32,13 +32,13 @@ function App() {
             onButtonClick={onButtonClick}
           />
         </Link>
-        <Link to={"/wordsack-app/"}>
+        <Link to={"/"}>
           <Logo className="logo" />
         </Link>
       </Route>
       <Route path="/hire-experts">
         <HireExperts />
-        <Link to={"/wordsack-app/"}>
+        <Link to={"/"}>
           <Logo className="logo" />
         </Link>
       </Route>
