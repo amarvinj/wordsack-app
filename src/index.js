@@ -10,10 +10,12 @@ import { HireExpertsProvider } from "./context/HireExperts";
 const el = document.getElementById("root");
 const root = ReactDOM.createRoot(el);
 
+// {process.env.PUBLIC_URL} added
+
 root.render(
   <TranslationProvider>
     <HireExpertsProvider>
-      <BrowserRouter basename="/wordsack-app">
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <App />
       </BrowserRouter>
     </HireExpertsProvider>
