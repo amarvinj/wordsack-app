@@ -23,7 +23,7 @@ function NavigationProvider({ children, baseUrl }) {
   const navigate = (to) => {
     const url = baseUrl + to;
     console.log(url);
-    window.history.pushState({}, "", url);
+    window.history.pushState({}, "", to);
     setCurrentPath(to);
   };
 

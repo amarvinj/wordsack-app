@@ -2,7 +2,7 @@
   "homepage": "http://amarvinj.github.io/wordsack-app",
   "name": "wordsack",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -13,7 +13,7 @@
     "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.6.1",
+    "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",
     "react-to-pdf": "^0.0.14",
     "react-to-print": "^2.14.10",
