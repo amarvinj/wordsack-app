@@ -6,10 +6,10 @@ import { NavigationProvider } from "./context/navigation";
 import { TranslationProvider } from "./context/Translation";
 import { HireExpertsProvider } from "./context/HireExperts";
 
+const baseUrl = "/wordsack-app";
+
 const el = document.getElementById("root");
 const root = ReactDOM.createRoot(el);
-
-const baseUrl = "/wordsack-app";
 
 root.render(
   <TranslationProvider>

@@ -2,10 +2,12 @@ import { createContext, useEffect, useState } from "react";
 
 const NavigationContext = createContext();
 
-function NavigationProvider({ children }) {
+function NavigationProvider({ children, baseUrl }) {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
-  const baseUrl = "/wordsack-app";
+  // const baseUrl = "/wordsack-app/";
+
+  console.log("current path:", currentPath);
 
   useEffect(() => {
     const handler = () => {
@@ -20,6 +22,7 @@ function NavigationProvider({ children }) {
 
   const navigate = (to) => {
     const url = baseUrl + to;
+    console.log(url);
     window.history.pushState({}, "", url);
     setCurrentPath(to);
   };

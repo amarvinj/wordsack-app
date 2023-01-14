@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <Route path="/">
+      <Route path="/wordsack-app/">
         <Translate />
 
         <Link to={"/hire-experts"}>
