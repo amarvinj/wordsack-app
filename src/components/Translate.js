@@ -124,7 +124,7 @@ const Translate = () => {
           onButtonClick={onButtonClick}
         />
       </Link>
-      <Link to={"/"}>
+      <Link to={"/wordsack-app"}>
         <Logo className="logo" />
       </Link>
     </div>

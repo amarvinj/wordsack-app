@@ -7,15 +7,13 @@ import App from "./App";
 import { TranslationProvider } from "./context/Translation";
 import { HireExpertsProvider } from "./context/HireExperts";
 
-const baseUrl = "/wordsack-app";
-
 const el = document.getElementById("root");
 const root = ReactDOM.createRoot(el);
 
 root.render(
   <TranslationProvider>
     <HireExpertsProvider>
-      <BrowserRouter baseUrl={baseUrl}>
+      <BrowserRouter baseUrl={"/wordsack-app"}>
         <App />
       </BrowserRouter>
     </HireExpertsProvider>
