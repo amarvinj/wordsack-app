@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(el);
 root.render(
   <TranslationProvider>
     <HireExpertsProvider>
-      <BrowserRouter baseUrl={"/wordsack-app"}>
+      <BrowserRouter basename="/wordsack-app">
         <App />
       </BrowserRouter>
     </HireExpertsProvider>
