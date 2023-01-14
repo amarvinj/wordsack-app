@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import TranslationContext from "../context/Translation";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Dropdown from "./dropdown";
@@ -9,6 +10,9 @@ import DownloadDropdown from "./downloadDropdown";
 import { copy, arrowMaximize, rotate } from "../common/data/icons";
 import WordCounter from "./WordCounter";
 import CopySound from "../common/data/sound.wav";
+import Button from "../components/button";
+import { BUTTON_TYPES } from "../common/data/button";
+import { ReactComponent as Logo } from "../wordsack.svg";
 
 const Translate = () => {
   const {
@@ -20,12 +24,8 @@ const Translate = () => {
     setInputText,
     translated,
     setTranslated,
+    setInputTextWords,
   } = useContext(TranslationContext);
-
-  // const [inputLanguage, setInputLanguage] = useState(DROPDOWN_OPTIONS[1]);
-  // const [outputLanguage, setOutputLanguage] = useState(DROPDOWN_OPTIONS[0]);
-  // const [inputText, setInputText] = useState("");
-  // const [translated, setTranslated] = useState("");
 
   const [copied, setCopied] = useState(false);
 
@@ -45,6 +45,12 @@ const Translate = () => {
   const handleReset = () => {
     setInputText("");
     setTranslated("");
+  };
+
+  const onButtonClick = () => {
+    if (inputText.length > 0) {
+      setInputTextWords(WordCounter({ text: inputText }));
+    }
   };
 
   return (
@@ -110,6 +116,17 @@ const Translate = () => {
           <WordCounter text={translated} clsName="counter" /> Words
         </div>
       </div>
+      <Link to={"/hire-experts"}>
+        <Button
+          type={BUTTON_TYPES.PRIMARY}
+          btnText={"Hire Experts"}
+          iconPos="LEFT"
+          onButtonClick={onButtonClick}
+        />
+      </Link>
+      <Link to={"/"}>
+        <Logo className="logo" />
+      </Link>
     </div>
   );
 };

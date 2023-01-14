@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "../button";
 import { BUTTON_TYPES } from "../../common/data/button";
 import {
@@ -9,11 +10,12 @@ import {
   checks,
 } from "../../common/data/icons";
 import "./hire-experts.css";
-import Link from "../Link";
+// import Link from "../Link";
 import SelectFile from "./SelectFile";
 import Details from "./Details";
 import Payment from "./Payment";
 import TitleBar from "./TitleBar";
+import { ReactComponent as Logo } from "../../wordsack.svg";
 
 function HireExperts() {
   const [page, setPage] = useState(1);
@@ -31,6 +33,8 @@ function HireExperts() {
       return "previous";
     }
   };
+
+  console.log(previousPage);
 
   const handleChangeOneToTwo = () => {
     setPreviousPage(page);
@@ -82,6 +86,9 @@ function HireExperts() {
   return (
     <>
       <div className="hire-expert">
+        <Link to={"/"}>
+          <Logo className="logo" />
+        </Link>
         <div className="title-bar">
           <TitleBar
             className={titleBarClassName(1)}
