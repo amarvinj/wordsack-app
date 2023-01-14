@@ -9,7 +9,7 @@ import { HireExpertsProvider } from "./context/HireExperts";
 const el = document.getElementById("root");
 const root = ReactDOM.createRoot(el);
 
-const baseUrl = "/wordsack-app/";
+const baseUrl = "/wordsack-app";
 
 root.render(
   <TranslationProvider>

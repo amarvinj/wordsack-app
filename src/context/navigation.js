@@ -2,10 +2,10 @@ import { createContext, useEffect, useState } from "react";
 
 const NavigationContext = createContext();
 
-function NavigationProvider({ children, baseUrl }) {
+function NavigationProvider({ children }) {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
-  // const baseUrl = "/wordsack-app/";
+  const baseUrl = "/wordsack-app";
 
   useEffect(() => {
     const handler = () => {
