@@ -121,7 +121,7 @@ function HireExperts() {
         </div>
         {page === 1 && (
           <div>
-            <Link to="/wordsack-app">
+            <Link to="/">
               <Button
                 type={BUTTON_TYPES.SECONDARY}
                 btnText={"Back to Translator"}
