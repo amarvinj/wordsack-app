@@ -9,18 +9,31 @@ import airtableBase from "../Apis/base";
 import AddCommas from "../AddCommas";
 
 const Payment = () => {
-  const { uploadedWordCount, name } = useContext(HireExpertsContext);
-  const { inputLanguage, outputLanguage } = useContext(TranslationContext);
+  const { uploadedWordCount, name, file } = useContext(HireExpertsContext);
+  const { inputLanguage, outputLanguage, inputTextWords } =
+    useContext(TranslationContext);
+
+  let words = 0;
+
+  if (file.length > 0) {
+    words = uploadedWordCount;
+  } else {
+    words = inputTextWords;
+  }
+
+  const [price, setPrice] = useState(6 * words);
+  const [orginalPrice, setOrginalPrice] = useState(price);
   const [animate1, setAnimate1] = useState(false);
   const [animate2, setAnimate2] = useState(false);
   const [animate3, setAnimate3] = useState(false);
+
   const [hours, setHours] = useState(48);
   const [limitAnimation, setLimitAnimation] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState("Professional");
+  const [selectedPackage, setSelectedPackage] = useState("Intermediate");
 
-  const span = (
-    <span className="payment-span">{AddCommas(uploadedWordCount)} words</span>
-  );
+  const span = <span className="payment-span">{AddCommas(words)} words</span>;
+
+  let percentage = price * 0.3;
 
   useEffect(() => {
     setTimeout(() => {
@@ -36,6 +49,7 @@ const Payment = () => {
 
   const handlePackage = (selected) => {
     setSelectedPackage(selected);
+
     if (animate1 === true) {
       setAnimate1(false);
     } else if (animate2 === true) {
@@ -43,23 +57,51 @@ const Payment = () => {
     } else if (animate3 === true) {
       setAnimate3(false);
     }
+    let amount = price;
+    if (selected === selectedPackage) {
+      return;
+    } else {
+      if (selected === "Intermediate") {
+        if (selectedPackage === "Professional") {
+          amount = amount / 1.3;
+          setPrice(Math.round(amount));
+        } else if (selectedPackage === "Creative") {
+          amount = amount / 1.7;
+          setPrice(Math.round(amount));
+        }
+      } else if (selected === "Professional") {
+        amount += amount * 0.3;
+        setPrice(Math.round(amount));
+      } else if (selected === "Creative") {
+        amount += amount * 0.7;
+        setPrice(Math.round(amount));
+      }
+    }
   };
 
   const handleAddHours = () => {
-    if (hours === 96) {
+    let amount = price;
+    if (hours === 48) {
       console.log("cant add any more");
       setLimitAnimation(true);
     } else {
-      setHours(hours + 24);
+      setHours(hours + 12);
+      console.log(amount);
+      amount = Math.round(amount / 1.3);
+      console.log(amount);
+      setPrice(amount);
       setLimitAnimation(false);
     }
   };
 
   const handleMinusHours = () => {
-    if (hours <= 24) {
+    let amount = price;
+    if (hours <= 12) {
       setLimitAnimation(true);
     } else {
-      setHours(hours - 24);
+      amount += percentage;
+      setPrice(Math.round(amount));
+      setHours(hours - 12);
     }
   };
 
@@ -182,7 +224,7 @@ const Payment = () => {
               </div>
             </div>
           </div>
-          <h1 className="price">₹{"17,250"}</h1>
+          <h1 className="price">₹{price}</h1>
         </div>
       </div>
     </>
