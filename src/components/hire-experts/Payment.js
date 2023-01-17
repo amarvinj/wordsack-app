@@ -57,26 +57,102 @@ const Payment = () => {
     } else if (animate3 === true) {
       setAnimate3(false);
     }
+
     let amount = price;
+
     if (selected === selectedPackage) {
+      /*if previous selected package and new 
+      selected package are the same , do nothing! */
       return;
     } else {
+      /*else if previous select package and new 
+      selected package are not the same , execute this! */
       if (selected === "Intermediate") {
+        /* if the new selected package is "Intermediate",
+         execute this! */
         if (selectedPackage === "Professional") {
+          /* if the previous selected package is "Professional",
+            execute this! 
+            y - "Professional pacakage price"
+            x - "Intermediate pacakage price"
+            y = x + 30% of x, 
+            then we can express y as:
+            y = x + (x * 30) / 100
+            To find x, we can rearrange the equation to get:
+            x = y / 1.3
+            So in this case, we can find x by dividing y by 1.3 */
           amount = amount / 1.3;
           setPrice(Math.round(amount));
         } else if (selectedPackage === "Creative") {
+          /* if the previous selected package is "Creative",
+            execute this! 
+            y - "Creative pacakage price"
+            x - "Intermediate pacakage price"
+            y = x + 70% of x, 
+            then we can express y as:
+            y = x + (x * 70) / 100
+            To find x, we can rearrange the equation to get:
+            x = y / 1.7
+            So in this case, we can find x by dividing y by 1.7
+            x = x + (x * 0.7) is equvalent to x = x * 1.7 */
           amount = amount / 1.7;
           setPrice(Math.round(amount));
         }
       } else if (selected === "Professional") {
-        amount += amount * 0.3;
-        setPrice(Math.round(amount));
+        /* if the new selected package is "Professional",
+         execute this! */
+        if (selectedPackage === "Intermediate") {
+          /* if the previous selected package is "Intermediate",
+         execute this! find 30% of orginal/current price and add it 
+         with orginal/current 
+         x = x + (x * 0.3) is equvalent to x = x * 1.3 */
+          amount = amount * 1.3;
+          setPrice(Math.round(amount));
+        } else if (selectedPackage === "Creative") {
+          /* if the previous selected package is "Creative",
+          execute this! we use Creative-Intermediate method
+          and find the 30% of it and add with it */
+          amount = (amount / 1.7) * 1.3;
+          setPrice(Math.round(amount));
+        }
       } else if (selected === "Creative") {
-        amount += amount * 0.7;
-        setPrice(Math.round(amount));
+        /* if the new selected package is "Creative",
+         execute this! */
+        if (selectedPackage === "Intermediate") {
+          /* if the previous selected package is "Intermediate",
+         execute this! find 70% of orginal/current price and add it 
+         with orginal/current */
+          amount = amount * 1.7;
+          setPrice(Math.round(amount));
+        } else if (selectedPackage === "Professional") {
+          /* if the previous selected package is "Creative",
+          execute this! we use Professional-Intermediate method
+          and find the 70% of it and add with it */
+          amount = (amount / 1.3) * 1.7;
+          setPrice(Math.round(amount));
+        }
       }
     }
+
+    // if (selected === selectedPackage) {
+    //   return;
+    // } else {
+    //   if (selected === "Intermediate") {
+    //     if (selectedPackage === "Professional") {
+    //       amount = amount / 1.3;
+    //       setPrice(Math.round(amount));
+    //     } else if (selectedPackage === "Creative") {
+    //       amount = amount / 1.7;
+    //       setPrice(Math.round(amount));
+    //     }
+    //   } else if (selected === "Professional") {
+    //     amount += amount * 0.3;
+    //     setPrice(Math.round(amount));
+    //   } else if (selected === "Creative") {
+    //     amount += amount * 0.7;
+    //     setPrice(Math.round(amount));
+    //   }
+    // }
   };
 
   const handleAddHours = () => {
