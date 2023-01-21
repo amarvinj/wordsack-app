@@ -18,7 +18,7 @@ import TitleBar from "./TitleBar";
 import { ReactComponent as Logo } from "../../wordsack.svg";
 
 function HireExperts() {
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
   const [previousPage, setPreviousPage] = useState(0);
   const [progressBarClassName, setProgressBarClassName] = useState(
     "title-bar-progress-bar"
