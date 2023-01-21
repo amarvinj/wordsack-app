@@ -34,8 +34,6 @@ function HireExperts() {
     }
   };
 
-  console.log(previousPage);
-
   const handleChangeOneToTwo = () => {
     setPreviousPage(page);
     setPage(2);

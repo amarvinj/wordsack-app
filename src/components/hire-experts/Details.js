@@ -48,7 +48,7 @@ const Details = ({ onChange }) => {
         words = inputTextWords;
         text = inputText;
       }
-      console.log(words);
+
       const createRecord = async () => {
         const createdRecord = await base("Wordsack Database").create(
           {
@@ -66,7 +66,6 @@ const Details = ({ onChange }) => {
               return;
             }
             setAirtableRecordId(record.id);
-            console.log(record.id);
           }
         );
       };

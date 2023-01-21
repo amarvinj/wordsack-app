@@ -5,7 +5,6 @@ import TranslationContext from "../../context/Translation";
 import Button from "../button";
 import { BUTTON_TYPES } from "../../common/data/button";
 import { plus, minus } from "../../common/data/icons";
-import airtableBase from "../Apis/base";
 import AddCommas from "../AddCommas";
 
 const Payment = () => {
@@ -22,7 +21,6 @@ const Payment = () => {
   }
 
   const [price, setPrice] = useState(6 * words);
-  const [orginalPrice, setOrginalPrice] = useState(price);
   const [animate1, setAnimate1] = useState(false);
   const [animate2, setAnimate2] = useState(false);
   const [animate3, setAnimate3] = useState(false);
@@ -82,7 +80,7 @@ const Payment = () => {
             x = y / 1.3
             So in this case, we can find x by dividing y by 1.3 */
           amount = amount / 1.3;
-          setPrice(Math.round(amount));
+          setPrice(amount);
         } else if (selectedPackage === "Creative") {
           /* if the previous selected package is "Creative",
             execute this! 
@@ -96,7 +94,7 @@ const Payment = () => {
             So in this case, we can find x by dividing y by 1.7
             x = x + (x * 0.7) is equvalent to x = x * 1.7 */
           amount = amount / 1.7;
-          setPrice(Math.round(amount));
+          setPrice(amount);
         }
       } else if (selected === "Professional") {
         /* if the new selected package is "Professional",
@@ -107,13 +105,13 @@ const Payment = () => {
          with orginal/current 
          x = x + (x * 0.3) is equvalent to x = x * 1.3 */
           amount = amount * 1.3;
-          setPrice(Math.round(amount));
+          setPrice(amount);
         } else if (selectedPackage === "Creative") {
           /* if the previous selected package is "Creative",
           execute this! we use Creative-Intermediate method
           and find the 30% of it and add with it */
           amount = (amount / 1.7) * 1.3;
-          setPrice(Math.round(amount));
+          setPrice(amount);
         }
       } else if (selected === "Creative") {
         /* if the new selected package is "Creative",
@@ -123,13 +121,13 @@ const Payment = () => {
          execute this! find 70% of orginal/current price and add it 
          with orginal/current */
           amount = amount * 1.7;
-          setPrice(Math.round(amount));
+          setPrice(amount);
         } else if (selectedPackage === "Professional") {
           /* if the previous selected package is "Creative",
-          execute this! we use Professional-Intermediate method
+          execute this! we use Professional-Intermediate method from above
           and find the 70% of it and add with it */
           amount = (amount / 1.3) * 1.7;
-          setPrice(Math.round(amount));
+          setPrice(amount);
         }
       }
     }
@@ -158,13 +156,10 @@ const Payment = () => {
   const handleAddHours = () => {
     let amount = price;
     if (hours === 48) {
-      console.log("cant add any more");
       setLimitAnimation(true);
     } else {
       setHours(hours + 12);
-      console.log(amount);
       amount = Math.round(amount / 1.3);
-      console.log(amount);
       setPrice(amount);
       setLimitAnimation(false);
     }
@@ -176,7 +171,7 @@ const Payment = () => {
       setLimitAnimation(true);
     } else {
       amount += percentage;
-      setPrice(Math.round(amount));
+      setPrice(amount);
       setHours(hours - 12);
     }
   };
@@ -300,7 +295,7 @@ const Payment = () => {
               </div>
             </div>
           </div>
-          <h1 className="price">₹{price}</h1>
+          <h1 className="price">₹{Math.round(price)}</h1>
         </div>
       </div>
     </>

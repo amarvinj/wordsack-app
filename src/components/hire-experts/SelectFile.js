@@ -63,7 +63,6 @@ function SelectFile({ onChange }) {
     if (newFile) {
       setTimeout(() => {
         const updatedList = [...file, newFile];
-        console.log(updatedList);
         setFile(updatedList);
         setProgressBarClassName("progress-bar hidden");
       }, 1000);
@@ -90,10 +89,8 @@ function SelectFile({ onChange }) {
         setWordsCount(words);
       } else {
         onChange();
-        console.log("Go go next page");
       }
     } else {
-      console.log("Show the eroor");
       setPrintError(
         <span className="print-error active">*Upload A File To Proceed</span>
       );
@@ -113,7 +110,6 @@ function SelectFile({ onChange }) {
 
   const handleOkey = () => {
     onChange();
-    console.log("Go go next page");
   };
 
   const uploadAreaSubText =
