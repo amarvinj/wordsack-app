@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import HireExpertsContext from "../../context/HireExperts";
 import Button from "../button";
 import { BUTTON_TYPES } from "../../common/data/button";
 import {
@@ -15,14 +17,16 @@ import SelectFile from "./SelectFile";
 import Details from "./Details";
 import Payment from "./Payment";
 import TitleBar from "./TitleBar";
-import { ReactComponent as Logo } from "../../wordsack.svg";
 
 function HireExperts() {
-  const [page, setPage] = useState(1);
-  const [previousPage, setPreviousPage] = useState(0);
-  const [progressBarClassName, setProgressBarClassName] = useState(
-    "title-bar-progress-bar"
-  );
+  const {
+    page,
+    setPage,
+    previousPage,
+    setPreviousPage,
+    progressBarClassName,
+    setProgressBarClassName,
+  } = useContext(HireExpertsContext);
 
   const titleBarClassName = (pageNumber) => {
     if (pageNumber === page) {
@@ -83,10 +87,17 @@ function HireExperts() {
 
   return (
     <>
-      <div className="hire-expert">
-        <Link to={"/"}>
-          <Logo className="logo" />
-        </Link>
+      <motion.div
+        className="hire-expert"
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
+        exit={{ scale: 1.15, opacity: 0 }}
+      >
         <div className="title-bar">
           <TitleBar
             className={titleBarClassName(1)}
@@ -106,17 +117,20 @@ function HireExperts() {
             className={titleBarClassName(3)}
             title={"Payment"}
             icon={wallet}
+            page={3}
           />
           <TitleBar
             className={titleBarClassName(4)}
             title={"Completed"}
             icon={checks}
+            page={4}
           />
 
           <div className="title-bar-progress-bar-conrainer">
             <div className={progressBarClassName} />
           </div>
         </div>
+
         {page === 1 && (
           <div>
             <Link to="/">
@@ -127,13 +141,31 @@ function HireExperts() {
                 icon={arrowLeft}
               />
             </Link>
-
-            <SelectFile onChange={handleChangeOneToTwo} />
+            <AnimatePresence mode="wait">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ type: "spring", duration: 5 }}
+                exit={{ opacity: 0 }}
+              >
+                <SelectFile onChange={handleChangeOneToTwo} />
+              </motion.div>
+            </AnimatePresence>
           </div>
         )}
+
         {page === 2 && (
           <div>
-            <Details onChange={handleChangeTwoToThree} />
+            <AnimatePresence mode="wait">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ type: "spring", duration: 5 }}
+                exit={{ opacity: 0 }}
+              >
+                <Details onChange={handleChangeTwoToThree} />
+              </motion.div>
+            </AnimatePresence>
             <Button
               type={BUTTON_TYPES.SECONDARY}
               btnText={"Back to Files"}
@@ -143,9 +175,19 @@ function HireExperts() {
             />
           </div>
         )}
+
         {page === 3 && (
           <div>
-            <Payment />
+            <AnimatePresence mode="wait">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ type: "spring", duration: 5 }}
+                exit={{ opacity: 0 }}
+              >
+                <Payment />
+              </motion.div>
+            </AnimatePresence>
             <Button
               type={BUTTON_TYPES.SECONDARY}
               btnText={"Back to Details"}
@@ -155,7 +197,7 @@ function HireExperts() {
             />
           </div>
         )}
-      </div>
+      </motion.div>
     </>
   );
 }

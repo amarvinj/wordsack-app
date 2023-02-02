@@ -1,0 +1,365 @@
+@import "../common/styles/variables.css";
+
+.left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  background: var(--background);
+  width: 50vw;
+  height: 100vh;
+
+  left: 0px;
+  top: 0px;
+}
+
+.right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  background: var(--white);
+  width: 50vw;
+  height: 100vh;
+  right: 0px;
+  bottom: 0px;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.container-right {
+  margin-top: 4%;
+}
+
+.text-area {
+  position: relative;
+  background-color: var(--background);
+  width: 38vw;
+  height: 48vh;
+
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 42px;
+}
+
+.output-area {
+  position: relative;
+  width: 38vw;
+  height: 48vh;
+
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 42px;
+}
+
+.top-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 77%;
+  order: -1;
+}
+
+.bottom-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 77%;
+}
+
+.zoom-button {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+
+  position: relative;
+  width: 44px;
+  height: 44px;
+  /* right: 72px; */
+  /* top: 233px; */
+  /* top: 29.5%; */
+
+  background: var(--white);
+  border: 1px solid #f1f1f1;
+  border-radius: 56px;
+}
+
+.zoom-button:hover {
+  border: 1px solid var(--purple);
+}
+
+.zoom-button:hover svg {
+  stroke: var(--purple);
+  stroke-opacity: 100%;
+}
+
+.rotate {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 8px;
+  cursor: pointer;
+
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-left: 15px;
+  /* top: 89%;
+  left: 149px; */
+
+  background: var(--white);
+  border-radius: 56px;
+}
+
+.rotate:hover {
+  border: 1px solid var(--purple);
+}
+
+.rotate:hover svg {
+  stroke: var(--purple);
+  stroke-opacity: 100%;
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter {
+  font-family: "Avenir";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+
+  color: rgba(18, 19, 18, 0.7);
+
+  position: relative;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.copy-button {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+
+  position: relative;
+  width: 44px;
+  height: 44px;
+
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 56px;
+
+  flex: none;
+  flex-grow: 0;
+}
+
+.copy-button:hover {
+  border: 1px solid var(--purple);
+}
+
+.copy-button:hover svg {
+  stroke: var(--purple);
+  stroke-opacity: 100%;
+}
+
+.download-button {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+  margin-left: 12px;
+
+  position: relative;
+  width: 44px;
+  height: 44px;
+  /* top: 216px;
+    right: 88px; */
+
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 56px;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.download-button:hover {
+  border: 1px solid var(--purple);
+}
+
+.download-button:hover svg {
+  stroke: var(--purple);
+  stroke-opacity: 100%;
+}
+
+.download-button.active svg {
+  stroke: var(--purple);
+  stroke-opacity: 100%;
+}
+
+.download-button.active {
+  border: 1px solid var(--purple);
+}
+
+.copy-text {
+  color: var(--purple);
+  position: absolute;
+  padding: 12px;
+  right: 50px;
+  bottom: -2px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: var(--white);
+  padding: 10px 20px;
+  width: 152px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--liteGray);
+  color: var(--fadedGray);
+}
+
+/* .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: 20px;
+    height: 20px;
+    width: 20px;
+    background-color: var(--liteGray);
+    transform: rotate(45deg);
+  } */
+
+.dropdown-menu ul li {
+  padding: 10px 0;
+  /* border-top: 1px solid var(--liteGray); */
+}
+
+.dropdown-menu ul li:hover {
+  color: var(--purple);
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover img {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.dropdown-item {
+  display: flex;
+  margin: 10px auto;
+}
+
+/* .dropdown-item img {
+    max-width: 20px;
+    margin-right: 10px;
+    opacity: 0.5;
+    transition: var(--speed);
+  } */
+
+.dropdown-item:hover div {
+  color: var(--purple);
+}
+
+.dropdown-item div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  transition: var(--speed);
+}
+.dropdown-item svg {
+  stroke: var(--liteGray);
+  stroke-opacity: 40%;
+}
+
+.dropdown-item:hover div svg {
+  stroke: var(--purple);
+  stroke-opacity: 100%;
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: var(--speed) ease;
+}
+
+.dropdown-menu.active svg {
+  stroke: var(--fadedGray);
+  stroke-opacity: 100%;
+}
+
+.dropdown-menu.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: var(--speed) ease;
+}
+
+.dropdown-menu.inactive svg {
+  stroke-opacity: 0%;
+  transition: var(--speed) ease;
+}

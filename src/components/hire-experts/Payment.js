@@ -6,9 +6,27 @@ import Button from "../button";
 import { BUTTON_TYPES } from "../../common/data/button";
 import { plus, minus } from "../../common/data/icons";
 import AddCommas from "../AddCommas";
+import { Link } from "react-router-dom";
+import {
+  Intermediate,
+  Professional,
+  Creative,
+} from "../../common/data/packages";
 
 const Payment = () => {
-  const { uploadedWordCount, name, file } = useContext(HireExpertsContext);
+  const {
+    uploadedWordCount,
+    name,
+    file,
+    price,
+    setPrice,
+    hours,
+    setHours,
+    selectedPackage,
+    setSelectedPackage,
+    firstVisit,
+    setFirstVisit,
+  } = useContext(HireExpertsContext);
   const { inputLanguage, outputLanguage, inputTextWords } =
     useContext(TranslationContext);
 
@@ -20,18 +38,24 @@ const Payment = () => {
     words = inputTextWords;
   }
 
-  const [price, setPrice] = useState(6 * words);
+  useEffect(() => {
+    if (firstVisit) {
+      if (words < 100) {
+        setPrice(600);
+      } else {
+        setPrice(6 * words);
+      }
+      setFirstVisit(false);
+    }
+  }, [setPrice, words, firstVisit, setFirstVisit]);
+
+  // const [price, setPrice] = useState(6 * words);
   const [animate1, setAnimate1] = useState(false);
   const [animate2, setAnimate2] = useState(false);
   const [animate3, setAnimate3] = useState(false);
-
-  const [hours, setHours] = useState(48);
   const [limitAnimation, setLimitAnimation] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState("Intermediate");
 
   const span = <span className="payment-span">{AddCommas(words)} words</span>;
-
-  let percentage = price * 0.3;
 
   useEffect(() => {
     setTimeout(() => {
@@ -65,10 +89,10 @@ const Payment = () => {
     } else {
       /*else if previous select package and new 
       selected package are not the same , execute this! */
-      if (selected === "Intermediate") {
+      if (selected === Intermediate) {
         /* if the new selected package is "Intermediate",
          execute this! */
-        if (selectedPackage === "Professional") {
+        if (selectedPackage === Professional) {
           /* if the previous selected package is "Professional",
             execute this! 
             y - "Professional pacakage price"
@@ -81,7 +105,7 @@ const Payment = () => {
             So in this case, we can find x by dividing y by 1.3 */
           amount = amount / 1.3;
           setPrice(amount);
-        } else if (selectedPackage === "Creative") {
+        } else if (selectedPackage === Creative) {
           /* if the previous selected package is "Creative",
             execute this! 
             y - "Creative pacakage price"
@@ -96,33 +120,33 @@ const Payment = () => {
           amount = amount / 1.7;
           setPrice(amount);
         }
-      } else if (selected === "Professional") {
+      } else if (selected === Professional) {
         /* if the new selected package is "Professional",
          execute this! */
-        if (selectedPackage === "Intermediate") {
+        if (selectedPackage === Intermediate) {
           /* if the previous selected package is "Intermediate",
          execute this! find 30% of orginal/current price and add it 
          with orginal/current 
          x = x + (x * 0.3) is equvalent to x = x * 1.3 */
           amount = amount * 1.3;
           setPrice(amount);
-        } else if (selectedPackage === "Creative") {
+        } else if (selectedPackage === Creative) {
           /* if the previous selected package is "Creative",
           execute this! we use Creative-Intermediate method
           and find the 30% of it and add with it */
           amount = (amount / 1.7) * 1.3;
           setPrice(amount);
         }
-      } else if (selected === "Creative") {
+      } else if (selected === Creative) {
         /* if the new selected package is "Creative",
          execute this! */
-        if (selectedPackage === "Intermediate") {
+        if (selectedPackage === Intermediate) {
           /* if the previous selected package is "Intermediate",
          execute this! find 70% of orginal/current price and add it 
          with orginal/current */
           amount = amount * 1.7;
           setPrice(amount);
-        } else if (selectedPackage === "Professional") {
+        } else if (selectedPackage === Professional) {
           /* if the previous selected package is "Creative",
           execute this! we use Professional-Intermediate method from above
           and find the 70% of it and add with it */
@@ -155,7 +179,7 @@ const Payment = () => {
 
   const handleAddHours = () => {
     let amount = price;
-    if (hours === 48) {
+    if (hours >= 48) {
       setLimitAnimation(true);
     } else {
       setHours(hours + 12);
@@ -170,11 +194,17 @@ const Payment = () => {
     if (hours <= 12) {
       setLimitAnimation(true);
     } else {
-      amount += percentage;
+      amount = price * 1.3;
       setPrice(amount);
       setHours(hours - 12);
     }
   };
+
+  const tncBtn = (
+    <Link to={"/terms-&-conditions"}>
+      <div className="tncBtn"> terms and conditions. </div>{" "}
+    </Link>
+  );
 
   return (
     <>
@@ -223,11 +253,11 @@ const Payment = () => {
             >
               <Button
                 type={BUTTON_TYPES.SECONDARY}
-                btnText={"Intermediate"}
+                btnText={Intermediate}
                 iconPos="LEFT"
-                onButtonClick={() => handlePackage("Intermediate")}
+                onButtonClick={() => handlePackage(Intermediate)}
                 styles={
-                  selectedPackage === "Intermediate"
+                  selectedPackage === Intermediate
                     ? "packageBtn selected-package"
                     : "packageBtn"
                 }
@@ -250,11 +280,11 @@ const Payment = () => {
             >
               <Button
                 type={BUTTON_TYPES.SECONDARY}
-                btnText={"Professional"}
+                btnText={Professional}
                 iconPos="LEFT"
-                onButtonClick={() => handlePackage("Professional")}
+                onButtonClick={() => handlePackage(Professional)}
                 styles={
-                  selectedPackage === "Professional"
+                  selectedPackage === Professional
                     ? "packageBtn selected-package"
                     : "packageBtn"
                 }
@@ -276,11 +306,11 @@ const Payment = () => {
             >
               <Button
                 type={BUTTON_TYPES.SECONDARY}
-                btnText={"Creative"}
+                btnText={Creative}
                 iconPos="LEFT"
-                onButtonClick={() => handlePackage("Creative")}
+                onButtonClick={() => handlePackage(Creative)}
                 styles={
-                  selectedPackage === "Creative"
+                  selectedPackage === Creative
                     ? "packageBtn selected-package"
                     : "packageBtn"
                 }
@@ -295,8 +325,13 @@ const Payment = () => {
               </div>
             </div>
           </div>
-          <h1 className="price">₹{Math.round(price)}</h1>
+          <h1 className="price">₹{AddCommas(Math.round(price))}</h1>
         </div>
+        <h1 className="tag-text">
+          By clicking the button, you agree to our
+          {tncBtn} Kindly contact the support if you've any concerns should be
+          the content.
+        </h1>
       </div>
     </>
   );

@@ -1,0 +1,60 @@
+@import "../../common/styles/variables.css";
+
+.policy {
+  background-color: var(--background);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.policy-heading {
+  width: 41%;
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 60px;
+  color: #121312;
+}
+
+.policy-content {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 32px;
+  width: 41%;
+  height: 50%;
+  color: #121312;
+  margin-top: 16px;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.policy-content:hover {
+  overflow-y: auto;
+}
+
+.policy-content::-webkit-scrollbar-track {
+  background: #f7f0ff;
+}
+
+.policy-content::-webkit-scrollbar-thumb {
+  background: #d3d3d3 40%;
+}
+
+.policy-content::-webkit-scrollbar-thumb:hover {
+  background: #731be3;
+}
+
+.policy-btn-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}

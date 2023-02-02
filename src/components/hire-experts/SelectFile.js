@@ -1,8 +1,10 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
 import HireExpertsContext from "../../context/HireExperts";
+import TranslationContext from "../../context/Translation";
 import { upload, uploaded, fileIcon } from "../../common/data/icons";
 import "./hire-experts.css";
 import { BUTTON_TYPES } from "../../common/data/button";
+import { Intermediate } from "../../common/data/packages";
 import Button from "../button";
 import WordCounter from "../WordCounter";
 
@@ -16,20 +18,32 @@ function SelectFile({ onChange }) {
     setUploadedText,
     uploadedWordCount,
     setUploadedWordCount,
+    setFirstVisit,
+    setSelectedPackage,
+    setHours,
   } = useContext(HireExpertsContext);
 
+  const { inputTextWords } = useContext(TranslationContext);
+
   const [wordsCount, setWordsCount] = useState(100);
-  const [printError, setPrintError] = useState(null);
-  const [progressBarClassName, setProgressBarClassName] =
-    useState("progress-bar");
+  const [printErrorOne, setPrintErrorOne] = useState(null);
+  const [printErrorTwo, setPrintErrorTwo] = useState(null);
+  const [progressBarClassName, setProgressBarClassName] = useState(
+    "progress-bar hidden"
+  );
 
   useEffect(() => {
     const timer =
-      printError &&
+      printErrorTwo &&
       setTimeout(() => {
-        setPrintError(
+        setPrintErrorTwo(
           <span className="print-error inactive">
-            *Upload A File To Proceed
+            *Or Upload A File To Proceed
+          </span>
+        );
+        setPrintErrorOne(
+          <span className="print-error inactive">
+            *Input Some Text To Proceed
           </span>
         );
       }, 1000);
@@ -37,7 +51,7 @@ function SelectFile({ onChange }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [printError]);
+  }, [printErrorTwo]);
 
   const wrapperRef = useRef(null);
 
@@ -52,7 +66,9 @@ function SelectFile({ onChange }) {
   const onDrop = () => {
     wrapperRef.current.classList.remove("dragover");
 
-    setIsUploading(true);
+    setIsUploading(() => {
+      return true;
+    });
     setFile([]);
   };
 
@@ -62,9 +78,12 @@ function SelectFile({ onChange }) {
 
     if (newFile) {
       setTimeout(() => {
-        const updatedList = [...file, newFile];
+        const updatedList = [newFile];
         setFile(updatedList);
         setProgressBarClassName("progress-bar hidden");
+        setFirstVisit(true);
+        setSelectedPackage(Intermediate);
+        setHours(48);
       }, 1000);
     }
   };
@@ -80,10 +99,16 @@ function SelectFile({ onChange }) {
     finalData();
   }
 
-  const words = WordCounter({ text: uploadedText });
+  let words;
+
+  if (file.length > 0) {
+    words = WordCounter({ text: uploadedText });
+  } else if (inputTextWords > 0) {
+    words = inputTextWords;
+  }
 
   const handleGetStartedButtonClick = () => {
-    if (file.length > 0) {
+    if (file.length > 0 || inputTextWords > 0) {
       setUploadedWordCount(words);
       if (words < 100) {
         setWordsCount(words);
@@ -91,8 +116,11 @@ function SelectFile({ onChange }) {
         onChange();
       }
     } else {
-      setPrintError(
-        <span className="print-error active">*Upload A File To Proceed</span>
+      setPrintErrorTwo(
+        <span className="print-error active">*Or Upload A File To Proceed</span>
+      );
+      setPrintErrorOne(
+        <span className="print-error active">*Input Some Text To Proceed</span>
       );
     }
   };
@@ -140,13 +168,36 @@ function SelectFile({ onChange }) {
     file.length === 0 ? "file-upload" : "file-uploaded";
 
   const translationClass =
-    file.length > 0 ? "translation-selected non" : "translation-selected";
+    inputTextWords === 0 && file.length === 0
+      ? "translation-selected non"
+      : file.length > 0
+      ? "translation-selected non"
+      : "translation-selected";
+
+  let translationText =
+    inputTextWords === 0 && file.length === 0
+      ? "Input Text For Translation"
+      : file.length > 0 && inputTextWords > 0
+      ? "Or Select Previous Translation"
+      : "Translation Selected";
+
+  const handleReset = () => {
+    if (inputTextWords > 0) {
+      setIsUploading(false);
+      setFile([]);
+      setFirstVisit(true);
+      setSelectedPackage("Intermediate");
+      setHours(48);
+    }
+  };
 
   return wordsCount >= 100 ? (
     <div className="select-file">
-      <div className={translationClass}>
+      {/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+      <div className={translationClass} onClick={handleReset}>
         {fileIcon}
-        <h1 className="select-files-h1">Translation Selected</h1>
+        {printErrorOne}
+        <h1 className="select-files-h1">{translationText}</h1>
       </div>
 
       <div className="upload-area">
@@ -165,7 +216,7 @@ function SelectFile({ onChange }) {
             {uploadAreaSubText}
           </div>
           <input type="file" value="" onChange={onFileDrop} />
-          {printError}
+          {printErrorTwo}
           <div className="progress-bar-container">
             <div className="container">
               <div className={progressBarClassName} />
@@ -190,8 +241,12 @@ function SelectFile({ onChange }) {
     <div className="less-count">
       <h3 className="select-files-h3">Hmm!</h3>
       <h4 className="select-files-h4">
-        Looks like your doc has only {uploadedWordCount} words. We charge for a
-        minimum of 100 words, would you be comfortable to proceed.
+        Looks like
+        {file.length > 0 || inputTextWords.length === 0
+          ? ` your doc has only ${uploadedWordCount}`
+          : ` you only have ${inputTextWords} `}
+        words. We charge for a minimum of 100 words, would you be comfortable to
+        proceed.
       </h4>
       <div className="word-btns">
         <Button

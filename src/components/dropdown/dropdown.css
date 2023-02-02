@@ -5,18 +5,17 @@
   font-weight: 600;
   color: var(--purple);
   margin-bottom: 32px;
-  position: absolute;
+  position: relative;
   margin-left: 88px;
   margin-top: 24px;
   font-family: "Avenir Next";
 }
 .dropdown {
-  display: flex;
-  position: absolute;
+  position: relative;
   width: 145px;
   height: 44px;
-  left: 6vw;
-  top: 216px;
+  /* left: 6vw;
+  top: 216px; */
 }
 
 .dropdown-label {
@@ -26,7 +25,7 @@
 
 .dropdown-component {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--white);
 
@@ -34,7 +33,7 @@
   position: relative;
   border-radius: 5px;
   color: var(--fadedGray);
-  margin-top: 16px;
+  /* margin-top: 16px; */
   padding: 12px 24px;
   cursor: pointer;
   font-size: 18px;

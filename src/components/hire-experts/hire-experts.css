@@ -109,6 +109,7 @@
 }
 
 .translation-selected {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -123,16 +124,18 @@
   aspect-ratio: 2/1;
 
   background: #f8f2ff;
+  cursor: pointer;
 
-  position: relative;
   /* top: 230px;
   left: 30vw; */
 }
 .non {
   border: dashed 2px #ddcfed;
+  background: var(--white);
 }
 
 .select-files-h1 {
+  position: relative;
   font-family: Avenir Next;
   font-size: 20px;
   font-weight: 600;
@@ -201,7 +204,6 @@
   align-items: center;
 
   position: relative;
-  top: 35%;
 }
 
 .word-btns {
@@ -218,6 +220,7 @@
 
   color: red;
   margin-top: 10px;
+  bottom: -20%;
 }
 
 .print-error.active {
@@ -259,11 +262,13 @@ span {
 
 .container .progress-bar {
   position: absolute;
+  left: 0;
   border-radius: 2px;
   height: 100%;
   background-color: #731be3;
   visibility: visible;
   opacity: 100%;
+  width: 0%;
 }
 
 .progress-bar .hidden {
@@ -383,6 +388,16 @@ span {
   visibility: visible;
   opacity: 100%;
   width: 23%;
+}
+
+.progress-bar-3 {
+  position: absolute;
+  border-radius: 2px;
+  height: 100%;
+  background-color: #731be3;
+  visibility: visible;
+  opacity: 100%;
+  width: 75%;
 }
 
 .forward-animation-2 {

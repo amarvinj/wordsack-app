@@ -1,0 +1,80 @@
+@import "../common/styles/variables.css";
+
+.maximized {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.maximized-text-area {
+  position: relative;
+  background-color: var(--background);
+  width: 50vw;
+  height: 50vh;
+
+  margin-top: 10%;
+  margin-bottom: 5%;
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 42px;
+}
+
+.maximized-bottom-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+.maximized-buttons {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 24%;
+  right: 5vw;
+}
+
+.minimize-button {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 8px;
+
+  position: relative;
+  width: 44px;
+  height: 44px;
+  /* right: 72px; */
+  /* top: 233px; */
+  /* top: 29.5%; */
+
+  background: var(--white);
+  border: 1px solid #f1f1f1;
+  border-radius: 56px;
+  margin-left: 12px;
+}
+
+.minimize-button:hover {
+  border: 1px solid var(--purple);
+}
+
+.minimize-button:hover svg {
+  stroke: var(--purple);
+  stroke-opacity: 100%;
+}

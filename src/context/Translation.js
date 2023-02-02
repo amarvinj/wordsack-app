@@ -9,6 +9,7 @@ function TranslationProvider({ children }) {
   const [inputText, setInputText] = useState("");
   const [translated, setTranslated] = useState("");
   const [inputTextWords, setInputTextWords] = useState(0);
+  const [emailData, setEmailData] = useState("");
 
   const TranslationSelected = {
     inputLanguage: inputLanguage,
@@ -29,6 +30,8 @@ function TranslationProvider({ children }) {
         TranslationSelected,
         inputTextWords,
         setInputTextWords,
+        emailData,
+        setEmailData,
       }}
     >
       {children}

@@ -14,6 +14,15 @@ function HireExpertsProvider({ children }) {
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [airtableRecordId, setAirtableRecordId] = useState("");
+  const [page, setPage] = useState(1);
+  const [previousPage, setPreviousPage] = useState(0);
+  const [progressBarClassName, setProgressBarClassName] = useState(
+    "title-bar-progress-bar"
+  );
+  const [price, setPrice] = useState(0);
+  const [hours, setHours] = useState(48);
+  const [selectedPackage, setSelectedPackage] = useState("Intermediate");
+  const [firstVisit, setFirstVisit] = useState(true);
 
   return (
     <HireExpertsContext.Provider
@@ -40,6 +49,20 @@ function HireExpertsProvider({ children }) {
         setEmailError,
         airtableRecordId,
         setAirtableRecordId,
+        page,
+        setPage,
+        previousPage,
+        setPreviousPage,
+        progressBarClassName,
+        setProgressBarClassName,
+        price,
+        setPrice,
+        hours,
+        setHours,
+        selectedPackage,
+        setSelectedPackage,
+        firstVisit,
+        setFirstVisit,
       }}
     >
       {children}
