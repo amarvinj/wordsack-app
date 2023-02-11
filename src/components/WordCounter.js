@@ -1,6 +1,7 @@
 function WordCounter({ text }) {
   let newText = text
     .split(" ")
+    // eslint-disable-next-line array-callback-return
     .map((char) => {
       if (char.match(/[\w\u0080-\uFFFF]+/i)) {
         return char;

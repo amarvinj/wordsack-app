@@ -85,6 +85,11 @@ function HireExperts() {
     }
   };
 
+  const handleTitleBarClickThree = () => {
+    //Do notghing && Just to avoid error on click
+    //Uncaught TypeError: onClick is not a function
+  };
+
   return (
     <>
       <motion.div
@@ -118,12 +123,14 @@ function HireExperts() {
             title={"Payment"}
             icon={wallet}
             page={3}
+            onClick={handleTitleBarClickThree}
           />
           <TitleBar
             className={titleBarClassName(4)}
             title={"Completed"}
             icon={checks}
             page={4}
+            onClick={handleTitleBarClickThree}
           />
 
           <div className="title-bar-progress-bar-conrainer">

@@ -1,8 +1,8 @@
 import Airtable from "airtable";
 
-const base = new Airtable({ apiKey: "key19upCdYkZaoy3D" }).base(
-  "appoF3BXwAy4bnTij"
-);
+const base = new Airtable({
+  apiKey: `${process.env.REACT_APP_AIRTABLE_KEY}`,
+}).base("appoF3BXwAy4bnTij");
 
 // const AIRTABLE_API_KEY = "key19upCdYkZaoy3D";
 

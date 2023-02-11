@@ -1,9 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import TranslationContext from "../../context/Translation";
 import { download, document } from "../../common/data/icons";
 import DropdownItem from "./DropdownItem";
-import PdfPrint from "./pdfPrint";
+import PdfDownload from "../fileDownload/PdfDownload";
 
-const DownloadDropdown = (inputLanguage, outputLanguage, translated) => {
+const DownloadDropdown = () => {
+  const { inputLanguage, outputLanguage, translated } =
+    useContext(TranslationContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const ref = useRef();
@@ -18,7 +21,7 @@ const DownloadDropdown = (inputLanguage, outputLanguage, translated) => {
 
   const handlePdfDownload = () => {
     // setIsOpen(false);
-    PdfPrint(inputLanguage, outputLanguage, translated);
+    // PdfDownload();
     console.log(isOpen, "PDF Download was Clicked");
   };
 

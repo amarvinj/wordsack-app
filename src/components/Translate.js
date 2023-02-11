@@ -119,11 +119,11 @@ const Translate = () => {
       exit={{ scale: 1.15, opacity: 0 }}
     >
       <div className="left">
-        <div className="container">
+        <div className="container-area">
           <form>
             <textarea
               className="text-area"
-              placeholder="Type in English"
+              placeholder={`Type in ${inputLanguage.label}`}
               value={inputText}
               onChange={handleKeyPress}
             />
@@ -154,7 +154,7 @@ const Translate = () => {
       </div>
 
       <div className="right">
-        <div className="container container-right">
+        <div className="container-area container-right">
           <Convert
             text={inputText}
             language={outputLanguage}
@@ -182,11 +182,7 @@ const Translate = () => {
                 </CopyToClipboard>
               </div>
 
-              <DownloadDropdown
-                inputLanguage={inputLanguage}
-                outputLanguage={outputLanguage}
-                translated={translated}
-              />
+              <DownloadDropdown />
             </div>
           </div>
           {/* <div className="bottom-container">

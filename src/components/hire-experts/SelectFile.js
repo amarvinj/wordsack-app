@@ -7,6 +7,7 @@ import { BUTTON_TYPES } from "../../common/data/button";
 import { Intermediate } from "../../common/data/packages";
 import Button from "../button";
 import WordCounter from "../WordCounter";
+import { useNavigate } from "react-router-dom";
 
 function SelectFile({ onChange }) {
   const {
@@ -24,6 +25,8 @@ function SelectFile({ onChange }) {
   } = useContext(HireExpertsContext);
 
   const { inputTextWords } = useContext(TranslationContext);
+
+  const navigate = useNavigate();
 
   const [wordsCount, setWordsCount] = useState(100);
   const [printErrorOne, setPrintErrorOne] = useState(null);
@@ -188,6 +191,8 @@ function SelectFile({ onChange }) {
       setFirstVisit(true);
       setSelectedPackage("Intermediate");
       setHours(48);
+    } else if (file.length === 0) {
+      navigate("/");
     }
   };
 
