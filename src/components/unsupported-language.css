@@ -85,3 +85,12 @@
   left: 0;
   bottom: -25%;
 }
+
+.word-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+}

@@ -23,6 +23,7 @@ function HireExpertsProvider({ children }) {
   const [hours, setHours] = useState(48);
   const [selectedPackage, setSelectedPackage] = useState("Intermediate");
   const [firstVisit, setFirstVisit] = useState(true);
+  const [stripeError, setStripeError] = useState(null);
 
   return (
     <HireExpertsContext.Provider
@@ -63,6 +64,8 @@ function HireExpertsProvider({ children }) {
         setSelectedPackage,
         firstVisit,
         setFirstVisit,
+        stripeError,
+        setStripeError,
       }}
     >
       {children}

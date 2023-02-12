@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import HireExpertsContext from "../../context/HireExperts";
@@ -22,7 +22,6 @@ function HireExperts() {
   const {
     page,
     setPage,
-    previousPage,
     setPreviousPage,
     progressBarClassName,
     setProgressBarClassName,

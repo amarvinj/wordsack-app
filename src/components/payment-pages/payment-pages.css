@@ -1,0 +1,285 @@
+@import "../../common/styles/variables.css";
+
+.payment-pages {
+  background-color: var(--liteGray);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.title-bar {
+  width: 630px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  top: 5%;
+  width: 630px;
+}
+
+.title-bar-progress-bar-container {
+  position: absolute;
+  bottom: -55%;
+  left: -2%;
+  width: 104%;
+  height: 4px;
+  align-items: center;
+
+  background: #f7f0ff;
+  border-radius: 2px;
+}
+
+.bar-progress {
+  position: absolute;
+  border-radius: 2px;
+  height: 100%;
+  background-color: #731be3;
+  visibility: visible;
+  opacity: 100%;
+  width: 0%;
+}
+
+.complete {
+  width: 100%;
+}
+
+.cancel {
+  width: 75%;
+}
+
+.selected {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--purple);
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  text-align: center;
+  cursor: default;
+}
+
+.selected svg {
+  stroke: var(--purple);
+}
+
+.previous {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  color: #731be3;
+  opacity: 40%;
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height, or 171% */
+
+  text-align: center;
+  cursor: default;
+}
+
+.previous svg {
+  stroke: #731be3;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 20%; */
+}
+
+.heading-title {
+  /* width: 212px;
+  height: 60px; */
+  width: 80%;
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 60px;
+  /* identical to box height, or 136% */
+
+  text-align: center;
+
+  color: #121312;
+}
+
+.seconday-content {
+  width: 72%;
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 180%;
+  /* or 180% */
+
+  text-align: center;
+
+  /* Content/Primary */
+
+  color: #121312;
+}
+
+.container-frame {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+
+  width: 560px;
+  height: 198px;
+  left: 476px;
+  top: 444px;
+
+  background: #f4fff2;
+  border: 1px solid #dff2dc;
+  border-radius: 5px;
+}
+
+.language-container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.language {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 157%;
+  /* identical to box height, or  */
+
+  text-align: center;
+
+  color: #009432;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin-top: 44px;
+}
+
+.data {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  color: rgba(1, 51, 18, 0.4);
+}
+
+.pack {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 162%;
+  /* identical to box height, or 162% */
+
+  color: #013312;
+}
+
+.rating-container {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  gap: 8px;
+
+  margin-top: 15px;
+  width: 560px;
+  height: 60px;
+  right: 476px;
+  bottom: 265px;
+
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+}
+
+.rate-experience {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 150% */
+
+  text-align: center;
+
+  /* Content/Primary */
+
+  color: #121312;
+}
+
+.star-list {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+/* .star-list-items {
+  margin: 3px;
+} */
+
+.star-list-items svg {
+  opacity: 100%;
+  fill: var(--purple);
+}
+
+.sucess-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -13px;
+
+  position: relative;
+}
+
+.confetti {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}

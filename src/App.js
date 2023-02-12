@@ -1,5 +1,6 @@
 import React from "react";
-import { Routes, Route, Link, useLocation, Router } from "react-router-dom";
+import "@stripe/stripe-js";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 // import Link from "./components/Link";
 // import Route from "./components/Route";
@@ -11,6 +12,9 @@ import UnsupportedLanguage from "./components/UnsupportedLanguage";
 import PrivacyPolicy from "./components/Policies/PrivacyPolicy";
 import TermsAndConditions from "./components/Policies/TermsAndConditions";
 import RefundPolicy from "./components/Policies/RefundPolicy";
+import PaymentCompleted from "./components/payment-pages/PaymentCompleted";
+import PaymentCanceled from "./components/payment-pages/PaymentCanceled";
+import PaymentFailed from "./components/payment-pages/PaymentFailed";
 import { ReactComponent as Logo } from "./wordsack.svg";
 
 function App() {
@@ -23,12 +27,15 @@ function App() {
           <Route path="/maximized" element={<Maximized />} />
           <Route path="/hire-experts" element={<HireExperts />} />
           <Route
-            path="/unsupported-language"
+            path="unsupported-language"
             element={<UnsupportedLanguage />}
           />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-&-conditions" element={<TermsAndConditions />} />
-          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="terms-&-conditions" element={<TermsAndConditions />} />
+          <Route path="refund-policy" element={<RefundPolicy />} />
+          <Route path="success" element={<PaymentCompleted />} />
+          <Route path="cancel" element={<PaymentCanceled />} />
+          <Route path="failed" element={<PaymentFailed />} />
         </Routes>
       </AnimatePresence>
 

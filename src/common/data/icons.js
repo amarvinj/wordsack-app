@@ -150,6 +150,26 @@ export const arrowLeft = (
   </svg>
 );
 
+export const arrowRight = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-arrow-narrow-right"
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="#121312"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <line x1="5" y1="12" x2="19" y2="12" />
+    <line x1="15" y1="16" x2="19" y2="12" />
+    <line x1="15" y1="8" x2="19" y2="12" />
+  </svg>
+);
+
 export const document = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -170,6 +190,27 @@ export const document = (
     <line x1="9" y1="9" x2="10" y2="9" />
     <line x1="9" y1="13" x2="15" y2="13" />
     <line x1="9" y1="17" x2="15" y2="17" />
+  </svg>
+);
+
+export const downloadFile = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-file-download"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="#fff"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+    <line x1="12" y1="11" x2="12" y2="17" />
+    <polyline points="9 14 12 17 15 14" />
   </svg>
 );
 
@@ -325,5 +366,86 @@ export const minus = (
   >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <line x1="5" y1="12" x2="19" y2="12" />
+  </svg>
+);
+
+export const star = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-star"
+    width="25"
+    height="25"
+    viewBox="0 0 24 24"
+    strokeWidth="2"
+    stroke="#731BE3"
+    opacity="40%"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+  </svg>
+);
+
+export const translateIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-language"
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="#121312"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M4 5h7" />
+    <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+    <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+    <path d="M12 20l4 -9l4 9" />
+    <path d="M19.1 18h-6.2" />
+  </svg>
+);
+
+export const refresh = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-refresh"
+    width="25"
+    height="25"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="#fff"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />
+    <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
+  </svg>
+);
+
+export const card = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-credit-card"
+    width="25"
+    height="25"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="#121312"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <rect x="3" y="5" width="18" height="14" rx="3" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+    <line x1="7" y1="15" x2="7.01" y2="15" />
+    <line x1="11" y1="15" x2="13" y2="15" />
   </svg>
 );

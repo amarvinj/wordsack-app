@@ -158,7 +158,8 @@
   width: 36.5vw;
 }
 
-.add-more {
+.add-more,
+.download-reciept {
   position: relative;
 
   box-sizing: border-box;
@@ -175,7 +176,8 @@
   height: 72px;
 }
 
-.okey {
+.okey,
+.translate-more {
   position: relative;
   margin-right: 12px;
 

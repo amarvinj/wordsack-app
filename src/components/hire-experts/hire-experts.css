@@ -206,15 +206,6 @@
   position: relative;
 }
 
-.word-btns {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  position: relative;
-}
-
 .print-error {
   position: absolute;
 
@@ -390,7 +381,7 @@ span {
   width: 23%;
 }
 
-.progress-bar-3 {
+.title-bar-progress-bar-conrainer .progress-bar-3 {
   position: absolute;
   border-radius: 2px;
   height: 100%;

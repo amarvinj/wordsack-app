@@ -1,4 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
+
 import "./payment.css";
 import HireExpertsContext from "../../context/HireExperts";
 import TranslationContext from "../../context/Translation";
@@ -13,10 +16,21 @@ import {
   Creative,
 } from "../../common/data/packages";
 
+let stripePromise;
+
+const getStripe = () => {
+  if (!stripePromise) {
+    stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
+  }
+
+  return stripePromise;
+};
+
 const Payment = () => {
   const {
     uploadedWordCount,
     name,
+    email,
     file,
     price,
     setPrice,
@@ -26,6 +40,8 @@ const Payment = () => {
     setSelectedPackage,
     firstVisit,
     setFirstVisit,
+    stripeError,
+    setStripeError,
   } = useContext(HireExpertsContext);
   const { inputLanguage, outputLanguage, inputTextWords } =
     useContext(TranslationContext);
@@ -55,6 +71,8 @@ const Payment = () => {
   const [animate3, setAnimate3] = useState(false);
   const [limitAnimation, setLimitAnimation] = useState(false);
 
+  const [stripeIsLoading, setStripeIsLoading] = useState(false);
+
   const span = <span className="payment-span">{AddCommas(words)} words</span>;
 
   useEffect(() => {
@@ -68,6 +86,40 @@ const Payment = () => {
       clearTimeout();
     };
   }, [limitAnimation]);
+
+  const navigate = useNavigate();
+
+  let priceQuantity = Math.round(price / 6);
+  // const priceQuantity = 1;
+
+  const item = {
+    price: "price_1MaJ7rSI9szKvgIP7ypfOL8b",
+    quantity: priceQuantity,
+  };
+
+  const checkoutOptions = {
+    lineItems: [item],
+    mode: "payment",
+    successUrl: `${window.location.origin}/success`,
+    cancelUrl: `${window.location.origin}/cancel`,
+    customerEmail: email,
+  };
+
+  const redirectToCheckout = async () => {
+    setStripeIsLoading(true);
+    console.log("Redirect to checkout page");
+
+    const stripe = await getStripe();
+    const { error } = await stripe.redirectToCheckout(checkoutOptions);
+
+    console.log("Stripe Checkout error", error);
+    if (error) setStripeError(error.message);
+    setStripeIsLoading(false);
+  };
+
+  if (stripeError) {
+    navigate("failed");
+  }
 
   const handlePackage = (selected) => {
     setSelectedPackage(selected);
@@ -239,8 +291,10 @@ const Payment = () => {
         <div className="proceed-to-payment">
           <Button
             type={BUTTON_TYPES.PRIMARY}
-            btnText={"Proceed to Payment"}
+            btnText={stripeIsLoading ? "Loading..." : "Proceed to Payment"}
             styles={"proceed-to-payment"}
+            onButtonClick={redirectToCheckout}
+            disabled={stripeIsLoading}
           />
         </div>
 
