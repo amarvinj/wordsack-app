@@ -181,7 +181,9 @@ function PaymentCompleted() {
           </div>
         </div>
 
-        <div className="confetti">{animateConfetti && <Confetti />}</div>
+        <div className="confetti">
+          <Confetti />
+        </div>
 
         <Link to={"/"}>
           <Button
