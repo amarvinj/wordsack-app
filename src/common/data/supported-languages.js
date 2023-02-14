@@ -67,22 +67,12 @@ export const SUPPORTED_LANGUAGES = [
   },
   {
     one: {
-      label: "Hindi",
-      value: "hi",
+      label: "English",
+      value: "en",
     },
     two: {
-      label: "Malayalam",
-      value: "ml",
-    },
-  },
-  {
-    one: {
-      label: "Arabic",
-      value: "ar",
-    },
-    two: {
-      label: "Malayalam",
-      value: "ml",
+      label: "Kannada",
+      value: "kn",
     },
   },
 ];
