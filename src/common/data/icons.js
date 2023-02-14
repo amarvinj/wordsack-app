@@ -449,3 +449,39 @@ export const card = (
     <line x1="11" y1="15" x2="13" y2="15" />
   </svg>
 );
+
+export const dropdownIconOne = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-chevron-left"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="#000"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <polyline points="15 6 9 12 15 18" />
+  </svg>
+);
+
+export const dropdownIconTwo = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon icon-tabler icon-tabler-chevron-down"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="#000"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+);

@@ -58,7 +58,7 @@ function UnsupportedLanguage() {
   return (
     <div className="unsupported-language">
       <div className="unsupported-language-container">
-        <h3 className="unsupported-language-h3">Opps!</h3>
+        <h3 className="unsupported-language-h3">Oops!</h3>
         <h4 className="unsupported-language-h4">
           Oops! We don't have experts in those languages at the moment, although
           your requested has been notified. Additionally, you can share your

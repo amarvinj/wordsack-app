@@ -11,7 +11,7 @@ function Confetti() {
         duration={5000}
         particleCount={500}
         width={window.innerWidth}
-        colors={["#731BE3", "#eabfff", "#800080", "#d580ff", "#ffffff"]}
+        // colors={["#731BE3", "#eabfff", "#800080", "#d580ff", "#ffffff"]}
       />
     </div>
   );

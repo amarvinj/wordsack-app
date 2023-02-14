@@ -6,6 +6,7 @@ import WordCounter from "./WordCounter";
 
 function Convert({ language, text, translated, setTranslated }) {
   const [debouncedText, setDebouncedText] = useState(text);
+  const [right, setRight] = useState(false);
 
   let showCounter = (
     <div className="counter">
@@ -61,6 +62,17 @@ function Convert({ language, text, translated, setTranslated }) {
     }
   }, [language, debouncedText, setTranslated, words]);
 
+  useEffect(() => {
+    const flagExists =
+      ["ar", "he", "dv", "ckb", "ps", "fa", "sd", "ur", "ug", "yi"].filter(
+        (lang) => {
+          return lang === language.value;
+        }
+      ).length > 0;
+
+    setRight(!flagExists);
+  }, [language]);
+
   text !== "" && !text.match(/^\s*$/) && (placeHolder = "Translating...");
 
   text !== "" &&
@@ -76,6 +88,11 @@ function Convert({ language, text, translated, setTranslated }) {
         placeholder={placeHolder}
         readOnly="readonly"
         value={translated}
+        style={{
+          textAlign: `${
+            right ? "left" : translated.length !== 0 ? "right" : "left"
+          }`,
+        }}
       />
       <div className="bottom-container">
         <div className="counter">{showCounter}</div>

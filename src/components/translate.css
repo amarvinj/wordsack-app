@@ -1,5 +1,13 @@
 @import "../common/styles/variables.css";
 
+.translate-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .left {
   position: relative;
   display: flex;
@@ -47,6 +55,8 @@
   background-color: var(--background);
   width: 38vw;
   height: 48vh;
+  max-height: 60vh;
+  min-height: 25vh;
 
   margin-top: 30px;
   margin-bottom: 30px;
@@ -62,6 +72,8 @@
   position: relative;
   width: 38vw;
   height: 48vh;
+  max-height: 60vh;
+  min-height: 25vh;
 
   margin-top: 30px;
   margin-bottom: 30px;

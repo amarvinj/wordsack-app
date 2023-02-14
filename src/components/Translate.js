@@ -7,7 +7,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import Dropdown from "./dropdown";
 import { DROPDOWN_OPTIONS } from "../common/data/dropdown";
 import { SUPPORTED_LANGUAGES } from "../common/data/supported-languages";
-import "../App.css";
+// import "../App.css";
 import "./translate.css";
 import Convert from "./Convert";
 import DownloadDropdown from "./downloadDropdown";
@@ -108,7 +108,7 @@ const Translate = () => {
 
   return (
     <motion.div
-      className="App"
+      className="translate-container"
       initial={{ scale: 0.95, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{
@@ -135,6 +135,7 @@ const Translate = () => {
               options={DROPDOWN_OPTIONS}
               selectedOption={inputLanguage}
               setSelectedOption={setInputLanguage}
+              disabled={true}
             />
             <Link to={"/maximized"}>
               <button className="zoom-button">{maximize}</button>
@@ -168,6 +169,7 @@ const Translate = () => {
               options={DROPDOWN_OPTIONS}
               selectedOption={outputLanguage}
               setSelectedOption={setOutputLanguage}
+              color={true}
             />
             <div className="buttons">
               <div className="copy">

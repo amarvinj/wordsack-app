@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+
+import { dropdownIconOne, dropdownIconTwo } from "../../common/data/icons";
 import "./dropdown.css";
 
 const Dropdown = ({
@@ -8,9 +10,20 @@ const Dropdown = ({
   options,
   title,
   borderOn,
+  color,
+  disabled,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchWord, setSearchWord] = useState("");
   const ref = useRef();
+
+  useEffect(() => {
+    if (isOpen) {
+      setSearchWord("");
+    } else {
+      setSearchWord(selectedOption.label);
+    }
+  }, [selectedOption, isOpen]);
 
   useEffect(() => {
     const onBodyClick = (event) => {
@@ -33,39 +46,19 @@ const Dropdown = ({
     setIsOpen(false);
   };
 
-  const icon = isOpen ? (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="icon icon-tabler icon-tabler-chevron-left"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="#731BE3"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <polyline points="15 6 9 12 15 18" />
-    </svg>
-  ) : (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="icon icon-tabler icon-tabler-chevron-down"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="#731BE3"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
-  );
+  const hangleChange = (e) => {
+    setSearchWord(e.target.value);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    // console.log("hi", isOpen);
+  };
+
+  // console.log(isOpen);
+
+  const icon = isOpen ? dropdownIconOne : dropdownIconTwo;
+
   const className = `dropdown-component ${borderOn && "border-on"}`;
 
   return (
@@ -74,24 +67,58 @@ const Dropdown = ({
         {/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
         <div
           className="selected-options-wrapper"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen(() => true)}
         >
-          <div>{selectedOption.label}</div>
-          {icon}
+          <input
+            className="selected-option"
+            style={{
+              cursor: !isOpen && "pointer",
+              color: !isOpen && color && "#731BE3",
+            }}
+            type="text"
+            placeholder="Search"
+            onChange={(event) => hangleChange(event)}
+            value={
+              disabled ? "English" : !isOpen ? selectedOption.label : searchWord
+            }
+          />
+          {/* <div className="selected-option">{selectedOption.label}</div> */}
+
+          {/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+          <div className="selected-option-icon" onClick={handleClose}>
+            {icon}
+          </div>
         </div>
         {isOpen && (
           <div className="dropdown-options">
-            {options.length > 0 &&
-              options.map((option) => (
-                // rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
-                <div
-                  key={option.value}
-                  className="dropdown-option text-color"
-                  onClick={() => handleSelected(option)}
-                >
-                  {option.label}
-                </div>
-              ))}
+            {options.length > 0 && searchWord !== ""
+              ? options
+                  .filter((option) => {
+                    const searchTerm = searchWord.toLocaleLowerCase();
+                    const searchList = option.label.toLocaleLowerCase();
+
+                    return searchList.startsWith(searchTerm);
+                  })
+                  .map((option) => (
+                    // rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+                    <div
+                      key={option.value}
+                      className="dropdown-option text-color"
+                      onClick={() => handleSelected(option)}
+                    >
+                      {option.label}
+                    </div>
+                  ))
+              : options.map((option) => (
+                  // rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+                  <div
+                    key={option.value}
+                    className="dropdown-option text-color"
+                    onClick={() => handleSelected(option)}
+                  >
+                    {option.label}
+                  </div>
+                ))}
           </div>
         )}
       </div>
