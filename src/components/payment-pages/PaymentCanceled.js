@@ -7,6 +7,7 @@ import { BUTTON_TYPES } from "../../common/data/button";
 import Button from "../button";
 import HireExpertsContext from "../../context/HireExperts";
 import TitleBar from "../hire-experts/TitleBar";
+import { ReactComponent as FaceEmoji } from "../../common/emojis/Smiling-face-with-tear.svg";
 import {
   arrowLeft,
   fileIcon,
@@ -104,9 +105,11 @@ function PaymentCanceled() {
         </div>
 
         <div className="content">
-          <h1 className="heading-title">
-            Ayyo! Looks like the Payment failed.
-          </h1>
+          <h1 className="heading-title">Ayyo! Looks like the</h1>
+          <div className="Containertwo">
+            <h1 className="heading-title">Payment failed.</h1>
+            <FaceEmoji className="header-emoji" />
+          </div>
           <p className="seconday-content">
             You just hit back & canceled the whole payment process. Please try
             again.

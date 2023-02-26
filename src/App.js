@@ -15,6 +15,8 @@ import RefundPolicy from "./components/Policies/RefundPolicy";
 import PaymentCompleted from "./components/payment-pages/PaymentCompleted";
 import PaymentCanceled from "./components/payment-pages/PaymentCanceled";
 import PaymentFailed from "./components/payment-pages/PaymentFailed";
+import TrackYourOrder from "./components/TrackOrder/TrackYourOrder";
+import Status from "./components/TrackOrder/Status";
 import { ReactComponent as Logo } from "./wordsack.svg";
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
           <Route path="success" element={<PaymentCompleted />} />
           <Route path="cancel" element={<PaymentCanceled />} />
           <Route path="failed" element={<PaymentFailed />} />
+          <Route path="track-your-order" element={<TrackYourOrder />} />
+          <Route path="status" element={<Status />} />
         </Routes>
       </AnimatePresence>
 

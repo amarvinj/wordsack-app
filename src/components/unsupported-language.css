@@ -19,6 +19,17 @@
   justify-content: center;
 }
 
+.header-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header-container h1 {
+  margin-right: 8px;
+}
+
 .unsupported-language-h3 {
   font-family: "Avenir Next";
   font-style: normal;

@@ -1,12 +1,8 @@
-import React, { useState, useRef, useContext } from "react";
-import TranslationContext from "../../context/Translation";
+import React, { useState, useRef } from "react";
 import { download, document } from "../../common/data/icons";
 import DropdownItem from "./DropdownItem";
-import PdfDownload from "../fileDownload/PdfDownload";
 
-const DownloadDropdown = () => {
-  const { inputLanguage, outputLanguage, translated } =
-    useContext(TranslationContext);
+function DownloadDropdown({ handlePdfClick, handleDocxClick }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const ref = useRef();
@@ -21,13 +17,12 @@ const DownloadDropdown = () => {
 
   const handlePdfDownload = () => {
     // setIsOpen(false);
-    // PdfDownload();
-    console.log(isOpen, "PDF Download was Clicked");
+    handlePdfClick();
   };
 
   const handleDocxDownload = () => {
     // setIsOpen(false);
-    console.log(isOpen, "DOCX Download was Clicked");
+    handleDocxClick();
   };
 
   return (
@@ -61,6 +56,6 @@ const DownloadDropdown = () => {
       </div>
     </div>
   );
-};
+}
 
 export default DownloadDropdown;

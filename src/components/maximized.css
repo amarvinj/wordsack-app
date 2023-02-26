@@ -17,6 +17,8 @@
   background-color: var(--background);
   width: 50vw;
   height: 50vh;
+  outline-color: var(--purple);
+  padding: 20px;
 
   margin-top: 10%;
   margin-bottom: 5%;

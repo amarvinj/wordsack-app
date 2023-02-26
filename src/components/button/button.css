@@ -197,7 +197,8 @@
   border-radius: 5px;
 }
 
-.details-to-payment {
+.details-to-payment,
+.order-satus {
   position: relative;
   margin-top: 54px;
 
@@ -214,4 +215,9 @@
   top: 730px; */
 
   right: 0;
+}
+
+.order-satus {
+  margin-top: 20px;
+  gap: 0px;
 }

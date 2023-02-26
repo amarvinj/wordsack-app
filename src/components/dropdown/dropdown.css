@@ -30,7 +30,8 @@
   background-color: var(--white);
 
   height: 100%;
-  width: 200px;
+  min-width: 163px; /* or use a percentage value */
+  width: auto;
   position: relative;
   border-radius: 5px;
   color: var(--fadedGray);
@@ -58,6 +59,8 @@
   border-radius: 5px;
   left: 0;
   padding: 20px;
+  padding-right: 45px;
+  outline-color: var(--purple);
 
   font-family: "Avenir Next";
   font-style: normal;
@@ -70,8 +73,8 @@
 
 .selected-option-icon {
   position: absolute;
-  right: 20px;
-  /* padding-right: 20px; */
+  right: 1px;
+  padding-right: 20px;
 }
 
 .dropdown-options {

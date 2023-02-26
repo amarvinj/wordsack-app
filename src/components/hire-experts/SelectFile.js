@@ -8,6 +8,7 @@ import { Intermediate } from "../../common/data/packages";
 import Button from "../button";
 import WordCounter from "../WordCounter";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as CardIndexEmoji } from "../../common/emojis/Card-index.svg";
 
 function SelectFile({ onChange }) {
   const {
@@ -244,7 +245,10 @@ function SelectFile({ onChange }) {
     </div>
   ) : (
     <div className="less-count">
-      <h3 className="select-files-h3">Hmm!</h3>
+      <div className="header-container">
+        <h1 className="select-files-h3">Hmm!</h1>
+        <CardIndexEmoji />
+      </div>
       <h4 className="select-files-h4">
         Looks like
         {file.length > 0 || inputTextWords.length === 0

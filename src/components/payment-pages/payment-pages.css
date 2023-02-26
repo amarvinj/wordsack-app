@@ -108,6 +108,17 @@
   /* margin-top: 20%; */
 }
 
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-emoji {
+  margin-left: 8px;
+}
+
 .heading-title {
   /* width: 212px;
   height: 60px; */

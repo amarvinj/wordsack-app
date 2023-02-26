@@ -5,6 +5,7 @@ import "./unsupported-language.css";
 import Button from "../components/button";
 import { BUTTON_TYPES } from "../common/data/button";
 import { ReactComponent as Logo } from "../wordsack.svg";
+import { ReactComponent as AlembicEmoji } from "../common/emojis/Alembic.svg";
 
 function UnsupportedLanguage() {
   const [emailError, setEmailError] = useState(false);
@@ -58,7 +59,10 @@ function UnsupportedLanguage() {
   return (
     <div className="unsupported-language">
       <div className="unsupported-language-container">
-        <h3 className="unsupported-language-h3">Oops!</h3>
+        <div className="header-container">
+          <h3 className="unsupported-language-h3">Oops!</h3>
+          <AlembicEmoji />
+        </div>
         <h4 className="unsupported-language-h4">
           Oops! We don't have experts in those languages at the moment, although
           your requested has been notified. Additionally, you can share your

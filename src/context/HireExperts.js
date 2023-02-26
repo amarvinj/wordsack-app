@@ -14,7 +14,7 @@ function HireExpertsProvider({ children }) {
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [airtableRecordId, setAirtableRecordId] = useState("");
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(3);
   const [previousPage, setPreviousPage] = useState(0);
   const [progressBarClassName, setProgressBarClassName] = useState(
     "title-bar-progress-bar"
@@ -24,6 +24,8 @@ function HireExpertsProvider({ children }) {
   const [selectedPackage, setSelectedPackage] = useState("Intermediate");
   const [firstVisit, setFirstVisit] = useState(true);
   const [stripeError, setStripeError] = useState(null);
+  const [status, setStatus] = useState(4);
+  const [trackingID, setTrackingID] = useState("");
 
   return (
     <HireExpertsContext.Provider
@@ -66,6 +68,10 @@ function HireExpertsProvider({ children }) {
         setFirstVisit,
         stripeError,
         setStripeError,
+        status,
+        setStatus,
+        trackingID,
+        setTrackingID,
       }}
     >
       {children}

@@ -57,6 +57,8 @@
   height: 48vh;
   max-height: 60vh;
   min-height: 25vh;
+  outline-color: var(--purple);
+  padding: 20px;
 
   margin-top: 30px;
   margin-bottom: 30px;
@@ -74,6 +76,8 @@
   height: 48vh;
   max-height: 60vh;
   min-height: 25vh;
+  outline-color: var(--purple);
+  padding: 20px;
 
   margin-top: 30px;
   margin-bottom: 30px;

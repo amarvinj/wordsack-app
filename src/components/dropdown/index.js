@@ -50,14 +50,11 @@ const Dropdown = ({
     setSearchWord(e.target.value);
   };
 
-  const handleClose = () => {
-    setIsOpen(false);
-    // console.log("hi", isOpen);
-  };
-
-  // console.log(isOpen);
-
-  const icon = isOpen ? dropdownIconOne : dropdownIconTwo;
+  const icon = !disabled
+    ? isOpen
+      ? dropdownIconOne
+      : dropdownIconTwo
+    : dropdownIconTwo;
 
   const className = `dropdown-component ${borderOn && "border-on"}`;
 
@@ -67,29 +64,48 @@ const Dropdown = ({
         {/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
         <div
           className="selected-options-wrapper"
-          onClick={() => setIsOpen(() => true)}
+          onClick={() => {
+            !disabled && setIsOpen(() => true);
+          }}
         >
           <input
             className="selected-option"
             style={{
-              cursor: !isOpen && "pointer",
+              cursor: !(isOpen || disabled) && "pointer",
               color: !isOpen && color && "#731BE3",
+              // outline: "none",
             }}
             type="text"
+            disabled={disabled}
             placeholder="Search"
             onChange={(event) => hangleChange(event)}
             value={
-              disabled ? "English" : !isOpen ? selectedOption.label : searchWord
+              !isOpen
+                ? selectedOption.label.length > 11
+                  ? `${selectedOption.label.slice(0, 11)}...`
+                  : selectedOption.label
+                : searchWord
             }
           />
           {/* <div className="selected-option">{selectedOption.label}</div> */}
 
           {/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
-          <div className="selected-option-icon" onClick={handleClose}>
+          <div
+            style={{
+              cursor: !disabled ? "pointer" : "default",
+            }}
+            className="selected-option-icon"
+            onClick={(event) => {
+              setIsOpen(!isOpen);
+              event.stopPropagation();
+              /*This will prevent the click event of the icon from propagating 
+              to its parent div, and will close the dropdown. */
+            }}
+          >
             {icon}
           </div>
         </div>
-        {isOpen && (
+        {!disabled && isOpen && (
           <div className="dropdown-options">
             {options.length > 0 && searchWord !== ""
               ? options

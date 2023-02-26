@@ -1,0 +1,141 @@
+@import "../../common/styles/variables.css";
+
+.track-order-page,
+.status-page {
+  background-color: var(--liteGray);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.headerContainer,
+.headerContainerTwo,
+.Containertwo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.headerContainerTwo {
+  flex-direction: column;
+}
+
+.Containertwo {
+  justify-content: space-between;
+}
+
+.header-emoji {
+  margin-left: 8px;
+}
+
+.heading-title {
+  /* width: 212px;
+    height: 60px; */
+  width: 100%;
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 60px;
+  /* identical to box height, or 136% */
+
+  text-align: center;
+
+  color: #121312;
+}
+
+.input {
+  background-color: var(--white);
+  position: relative;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  gap: 8px;
+  margin-top: 36px;
+
+  width: 560px;
+  height: 68px;
+
+  border: 1px solid rgba(218, 218, 218, 0.4);
+  border-radius: 5px;
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #121312;
+  outline-color: var(--purple);
+}
+
+.input-field {
+  position: relative;
+}
+
+.order-satus-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.status-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 60%;
+  position: relative;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: first baseline;
+  margin-top: 38px;
+  margin-left: 40px;
+}
+
+.item-index {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 8px;
+
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+
+  border: 1px solid #731be3;
+  border-radius: 100%;
+  margin-right: 12px;
+
+  position: absolute;
+  left: -20px;
+}
+
+.status-content p {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  color: #121312;
+}

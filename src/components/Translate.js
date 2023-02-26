@@ -1,6 +1,19 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import {
+  Document as PDFDocument,
+  Page,
+  Text,
+  View,
+  Font,
+  Image,
+  StyleSheet,
+} from "@react-pdf/renderer";
+import { Document as DOCXDocument, Packer, Paragraph, TextRun } from "docx";
+import { pdf } from "@react-pdf/renderer";
+import { saveAs } from "file-saver";
+
 import TranslationContext from "../context/Translation";
 import HireExpertsContext from "../context/HireExperts";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -17,6 +30,9 @@ import CopySound from "../common/data/sound.wav";
 import Button from "../components/button";
 import { BUTTON_TYPES } from "../common/data/button";
 import { Intermediate } from "../common/data/packages";
+import NotoSans from "../common/NotoSans-Regular.ttf";
+import NotoSansBold from "../common/NotoSans-Bold.ttf";
+import wordsack from "../wordsack.png";
 
 const Translate = () => {
   const {
@@ -106,6 +122,107 @@ const Translate = () => {
     setProgressBarClassName("title-bar-progress-bar");
   };
 
+  const handlePdfDownload = () => {
+    //code to download a pdf file
+
+    Font.register({
+      family: "Noto Sans",
+      format: "truetype",
+      src: NotoSansBold,
+    });
+
+    const styles = StyleSheet.create({
+      body: {
+        padding: "20px",
+      },
+      data: {
+        fontFamily: "Noto Sans",
+        position: "relative",
+      },
+      logo: {
+        height: "48px",
+        width: "253px",
+      },
+    });
+
+    const doc = (
+      <PDFDocument>
+        <Page>
+          <View style={styles.body}>
+            <Image src={wordsack} style={styles.logo} />
+            <Text style={styles.data}>
+              {"\n~             "}
+              {translated}
+            </Text>
+          </View>
+        </Page>
+      </PDFDocument>
+    );
+    pdf(doc)
+      .toBlob()
+      .then(function (blob) {
+        const url = URL.createObjectURL(blob);
+        saveAs(
+          url,
+          `wordsack-${inputLanguage.label}-to-${outputLanguage.label}.pdf`
+        );
+      });
+  };
+
+  const handleDocxDownload = () => {
+    //code to download a docx file
+    const doc = new DOCXDocument({
+      sections: [
+        {
+          properties: {},
+          children: [
+            new Paragraph({
+              children: [
+                new TextRun({
+                  text: "Wordsack",
+                  bold: true,
+                  size: 84,
+                }),
+              ],
+              alignment: "center",
+              spacing: {
+                before: 100, // add 100 twips (1/20th of a point) of space before the paragraph
+                after: 200, // add 200 twips of space after the paragraph
+              },
+            }),
+            new Paragraph({
+              children: [
+                new TextRun({
+                  text: `${inputLanguage.label}-to-${outputLanguage.label}`,
+                  bold: true,
+                  size: 35,
+                }),
+              ],
+              alignment: "center",
+              spacing: {
+                before: 100, // add 100 twips (1/20th of a point) of space before the paragraph
+                after: 500, // add 500 twips of space after the paragraph
+              },
+            }),
+            new Paragraph({
+              children: [
+                new TextRun({
+                  text: `\t${translated}`,
+                }),
+              ],
+            }),
+          ],
+        },
+      ],
+    });
+
+    Packer.toBlob(doc).then(function (blob) {
+      saveAs(
+        blob,
+        `wordsack-${inputLanguage.label}-to-${outputLanguage.label}.docx`
+      );
+    });
+  };
   return (
     <motion.div
       className="translate-container"
@@ -123,9 +240,11 @@ const Translate = () => {
           <form>
             <textarea
               className="text-area"
-              placeholder={`Type in ${inputLanguage.label}`}
+              placeholder="Type in English"
               value={inputText}
               onChange={handleKeyPress}
+              // rome-ignore lint/a11y/noAutofocus: <explanation>
+              autoFocus={true}
             />
           </form>
 
@@ -184,7 +303,10 @@ const Translate = () => {
                 </CopyToClipboard>
               </div>
 
-              <DownloadDropdown />
+              <DownloadDropdown
+                handlePdfClick={handlePdfDownload}
+                handleDocxClick={handleDocxDownload}
+              />
             </div>
           </div>
           {/* <div className="bottom-container">

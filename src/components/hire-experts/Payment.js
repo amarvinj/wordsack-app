@@ -10,6 +10,7 @@ import { BUTTON_TYPES } from "../../common/data/button";
 import { plus, minus } from "../../common/data/icons";
 import AddCommas from "../AddCommas";
 import { Link } from "react-router-dom";
+import { ReactComponent as HandEmoji } from "../../common/emojis/Waving-hand.svg";
 import {
   Intermediate,
   Professional,
@@ -261,7 +262,11 @@ const Payment = () => {
   return (
     <>
       <div className="payment">
-        <h1 className="payment-h1">Hello {name}</h1>
+        <div className="header-container">
+          <h1 className="payment-h1">Hello </h1>
+          <HandEmoji />
+          <h1 className="payment-h1">{name}</h1>
+        </div>
 
         <h2 className="payment-h2">
           Our writers are excited to translate your {span} of{" "}

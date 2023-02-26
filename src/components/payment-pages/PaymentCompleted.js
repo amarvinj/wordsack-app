@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { pdf } from "@react-pdf/renderer";
+import { saveAs } from "file-saver";
 
 import "./payment-pages.css";
 import Confetti from "../Confetti";
@@ -20,6 +22,8 @@ import {
 import { BUTTON_TYPES } from "../../common/data/button";
 import Button from "../button";
 import { star } from "../../common/data/icons";
+import { DocData } from "./Receipt";
+import { ReactComponent as PopperEmoji } from "../../common/emojis/Party-popper.svg";
 
 function PaymentCompleted() {
   const { inputLanguage, outputLanguage, inputTextWords } =
@@ -28,8 +32,8 @@ function PaymentCompleted() {
   const { file, hours, selectedPackage, uploadedWordCount } =
     useContext(HireExpertsContext);
 
-  const [hoverIndex, setHoverIndex] = useState(5);
-  const [rating, setRating] = useState(5);
+  const [hoverIndex, setHoverIndex] = useState(0);
+  const [rating, setRating] = useState(0);
   const [animateConfetti, setAnimateConfetti] = useState(false);
 
   useEffect(() => {
@@ -51,7 +55,34 @@ function PaymentCompleted() {
     //Uncaught TypeError: onClick is not a function
   };
 
-  const handleChange = () => {};
+  // {
+  //   family: "Noto Sans",
+  //   format: "truetype",
+  //   src: NotoSansBold,
+  // },
+
+  const handleDownloadReciept = () => {
+    pdf(
+      DocData({
+        inputLanguage,
+        outputLanguage,
+        inputTextWords,
+        file,
+        hours,
+        selectedPackage,
+        uploadedWordCount,
+      })
+    )
+      .toBlob()
+      .then(function (blob) {
+        const url = URL.createObjectURL(blob);
+        saveAs(url, "Wordsack-Reciept.pdf");
+      })
+      .catch(function (error) {
+        console.error("An error occurred while generating the PDF:", error);
+      });
+  };
+
   return (
     <>
       <motion.div
@@ -101,7 +132,10 @@ function PaymentCompleted() {
         </div>
 
         <div className="content">
-          <h1 className="heading-title">Awesome</h1>
+          <div className="headerContainer">
+            <h1 className="heading-title">Awesome</h1>
+            <PopperEmoji className="header-emoji" />
+          </div>
           <p className="seconday-content">
             We've received your payment and the translation is being processed.
           </p>
@@ -162,7 +196,7 @@ function PaymentCompleted() {
           </div>
 
           <div className="sucess-btns">
-            <Link to={"/"}>
+            <Link to={"/track-your-order"}>
               <Button
                 type={BUTTON_TYPES.SECONDARY}
                 btnText={"Track Your Order"}
@@ -177,6 +211,7 @@ function PaymentCompleted() {
               styles={"download-reciept"}
               icon={downloadFile}
               iconPos="RIGHT"
+              onButtonClick={handleDownloadReciept}
             />
           </div>
         </div>
@@ -191,7 +226,6 @@ function PaymentCompleted() {
             btnText={"Back to Translator"}
             iconPos="LEFT"
             icon={arrowLeft}
-            onButtonClick={handleChange}
           />
         </Link>
       </motion.div>
