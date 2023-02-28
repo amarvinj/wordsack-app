@@ -14,7 +14,7 @@ function HireExpertsProvider({ children }) {
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [airtableRecordId, setAirtableRecordId] = useState("");
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(1);
   const [previousPage, setPreviousPage] = useState(0);
   const [progressBarClassName, setProgressBarClassName] = useState(
     "title-bar-progress-bar"

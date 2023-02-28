@@ -28,29 +28,8 @@ function WordCounter({ text }) {
     } else if (newText.match(/^\s*$/)) {
       count = 0;
     } else {
-      newText = newText.replace(/[!@#$%^&*(),.?":{}|<>]\n/gi, "\n");
-      /*replaces all occurrences of a special character (specified
-        within the square brackets) followed by a line break in the
-        string with just a line break. */
-      newText = newText.replace(/\n/gi, " ");
-      /*Replaces all line breaks ("\n") in the string
-      with a single space character. The "gi" flags stand for "global"
-      and "case-insensitive". */
-      newText = newText.replace(/^[!@#$%^&*(),.?":{}|<>]*$/gi, " ");
-      /* Removes all special characters (symbols specified within the
-      square brackets) from the start and end of the  string. */
-      newText = newText.replace(/[ ]{2,}/gi, " ");
-      /*Replaces all sequences of 2 or more space characters within
-      the string with a single space character. */
-      newText = newText.replace(/\n /, "\n");
-      /*Replaces line breaks with a single space character at the
-      end of each line in the "newText" string. */
-      newText = newText.replace(/\n/gi, " ");
-      /*Replaces all line breaks within the string with a single
-      space character.*/
-      newText = newText.replace(/\s+/, " ");
-      /* Replaces multiple spaces within the string with a
-      single space character. */
+      newText = newText.replace(/[^\p{L}\p{N}\s]/gu, ""); // remove all characters except letters, numbers, and whitespace
+      newText = newText.replace(/[\s]+/g, " "); // replace multiple whitespaces with a single space
       // console.log(newText.trim().split(" "));
       count = newText.trim().split(" ").length;
     }

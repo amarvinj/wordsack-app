@@ -79,6 +79,7 @@
 
 .proceed-to-payment {
   position: relative;
+  user-select: none;
 
   right: 0;
   top: 0;
