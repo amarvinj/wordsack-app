@@ -218,6 +218,10 @@
   right: 0;
 }
 
+.details-to-payment {
+  order: 2;
+}
+
 .order-satus {
   margin-top: 20px;
   gap: 0px;

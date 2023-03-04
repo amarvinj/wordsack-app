@@ -84,9 +84,14 @@
   transform: translateY(100%);
   background-color: var(--white);
   width: 100%;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 5px;
   max-height: 310px;
-  overflow: scroll;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dropdown-options::-webkit-scrollbar {
+  display: none;
 }
 
 .dropdown-option {

@@ -200,7 +200,14 @@ function SelectFile({ onChange }) {
   return wordsCount >= 100 ? (
     <div className="select-file">
       {/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
-      <div className={translationClass} onClick={handleReset}>
+      <div
+        className={translationClass}
+        onClick={handleReset}
+        style={{
+          cursor:
+            file.length >= 0 && inputTextWords === 0 ? "default" : "pointer",
+        }}
+      >
         {fileIcon}
         {printErrorOne}
         <h1 className="select-files-h1">{translationText}</h1>

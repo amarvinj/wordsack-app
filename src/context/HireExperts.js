@@ -10,9 +10,15 @@ function HireExpertsProvider({ children }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
+  const [country, setCountry] = useState("in");
   const [countryState, setCountryState] = useState("");
+
+  const [isValidNumber, setIsValidNumber] = useState(false);
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+  const [stateError, setStateError] = useState(false);
+
   const [airtableRecordId, setAirtableRecordId] = useState("");
   const [page, setPage] = useState(1);
   const [previousPage, setPreviousPage] = useState(0);
@@ -25,6 +31,7 @@ function HireExpertsProvider({ children }) {
   const [firstVisit, setFirstVisit] = useState(true);
   const [stripeError, setStripeError] = useState(null);
   const [status, setStatus] = useState(4);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [trackingID, setTrackingID] = useState("");
 
   return (
@@ -42,14 +49,22 @@ function HireExpertsProvider({ children }) {
         setName,
         email,
         setEmail,
+        country,
+        setCountry,
         contactNumber,
         setContactNumber,
         countryState,
         setCountryState,
+        isValidNumber,
+        setIsValidNumber,
         nameError,
         setNameError,
         emailError,
         setEmailError,
+        phoneError,
+        setPhoneError,
+        stateError,
+        setStateError,
         airtableRecordId,
         setAirtableRecordId,
         page,

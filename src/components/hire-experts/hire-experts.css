@@ -304,6 +304,7 @@ span {
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
+  cursor: default;
   /* identical to box height, or 171% */
 
   text-align: center;
@@ -329,6 +330,7 @@ span {
   /* identical to box height, or 171% */
 
   text-align: center;
+  cursor: default;
 }
 
 .upcoming svg {

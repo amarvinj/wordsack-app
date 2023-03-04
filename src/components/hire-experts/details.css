@@ -22,7 +22,6 @@
   align-items: center;
   padding: 20px;
   gap: 8px;
-  margin-top: 52px;
 
   width: 560px;
   height: 68px;
@@ -43,15 +42,6 @@
   position: relative;
 }
 
-.details-to-payment-btns {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
-}
-
 .error-msg {
   font-family: "Avenir Next";
   font-style: normal;
@@ -61,5 +51,130 @@
   color: red;
   position: absolute;
   left: 0;
-  bottom: -45%;
+  bottom: -25%;
+}
+
+.react-tel-input {
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.country {
+  color: #731be3;
+}
+
+/* .country:hover {
+  color: white;
+} */
+
+.highlight {
+  color: white;
+}
+.react-tel-input .country-list .country.highlight {
+  background-color: #731be3;
+}
+
+/* .react-tel-input .country-list .country:hover {
+  background-color: #731be3;
+} */
+
+.react-tel-input .country-list .country .dial-code {
+  color: #731be3;
+}
+
+.react-tel-input .country-list .country.highlight .dial-code {
+  color: white;
+}
+
+.react-tel-input .form-control {
+  padding-left: 84px;
+}
+
+.react-tel-input .selected-flag {
+  width: 70px;
+}
+
+.react-tel-input .selected-flag .flag {
+  /* position: relative; */
+  left: 40%;
+  scale: 1.3;
+}
+
+.react-tel-input .country-list {
+  width: 561px;
+  max-height: 250px;
+  left: -2px;
+  border: 2px solid rgba(218, 218, 218, 0.4);
+  border-radius: 5px;
+}
+
+.country span {
+  position: inherit;
+}
+
+.react-tel-input .flag-dropdown {
+  background-color: white;
+}
+
+.react-tel-input .flag-dropdown.open {
+  background-color: #f5f5f5;
+  background: #731be3;
+}
+
+.react-tel-input .form-control.open {
+  border-color: #731be3 !important;
+}
+
+.state-list {
+  position: absolute;
+  bottom: -10px;
+  left: 0px;
+  transform: translateY(100%);
+  background-color: var(--white);
+  width: 100%;
+  /* height: 100px; */
+  border-radius: 0px 0px 5px 5px;
+  max-height: 150px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid rgba(218, 218, 218, 0.4);
+  border-radius: 5px;
+}
+
+.state-list::-webkit-scrollbar {
+  display: none;
+}
+
+.state-list-option {
+  padding: 12px;
+  color: #731be3;
+
+  font-family: "Avenir Next";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.state-list-option:hover {
+  color: var(--white);
+  background-color: var(--purple);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  order: -1;
+}
+
+.details-to-payment-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  order: 1;
 }

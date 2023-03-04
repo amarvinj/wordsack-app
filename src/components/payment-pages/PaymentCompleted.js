@@ -29,8 +29,14 @@ function PaymentCompleted() {
   const { inputLanguage, outputLanguage, inputTextWords } =
     useContext(TranslationContext);
 
-  const { file, hours, selectedPackage, uploadedWordCount } =
-    useContext(HireExpertsContext);
+  const {
+    file,
+    hours,
+    selectedPackage,
+    uploadedWordCount,
+    paymentSuccess,
+    setPaymentSuccess,
+  } = useContext(HireExpertsContext);
 
   const [hoverIndex, setHoverIndex] = useState(0);
   const [rating, setRating] = useState(0);
@@ -98,21 +104,24 @@ function PaymentCompleted() {
       >
         <div className="title-bar">
           <TitleBar
-            className="previous"
+            className="previous paymentdone"
+            style={{ cursor: "default" }}
             title={"Select File"}
             icon={fileIcon}
             onClick={handleNothing}
             page={1}
           />
           <TitleBar
-            className="previous"
+            className="previous paymentdone"
+            style={{ cursor: "default" }}
             title={"Details"}
             icon={pen}
             onClick={handleNothing}
             page={2}
           />
           <TitleBar
-            className="previous"
+            className="previous paymentdone"
+            style={{ cursor: "default" }}
             title={"Payment"}
             icon={wallet}
             page={3}
