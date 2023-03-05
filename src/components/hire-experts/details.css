@@ -40,6 +40,7 @@
 
 .input-field {
   position: relative;
+  display: flex;
 }
 
 .error-msg {

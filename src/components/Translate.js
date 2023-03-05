@@ -1,15 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  Document as PDFDocument,
-  Page,
-  Text,
-  View,
-  Font,
-  Image,
-  StyleSheet,
-} from "@react-pdf/renderer";
+
 import { Document as DOCXDocument, Packer, Paragraph, TextRun } from "docx";
 import { pdf } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
@@ -30,9 +22,7 @@ import CopySound from "../common/data/sound.wav";
 import Button from "../components/button";
 import { BUTTON_TYPES } from "../common/data/button";
 import { Intermediate } from "../common/data/packages";
-import NotoSans from "../common/NotoSans-Regular.ttf";
-import NotoSansBold from "../common/NotoSans-Bold.ttf";
-import wordsack from "../wordsack.png";
+import { PdfDoc } from "./PdfDoc";
 
 const Translate = () => {
   const {
@@ -122,43 +112,81 @@ const Translate = () => {
     setProgressBarClassName("title-bar-progress-bar");
   };
 
+  const rightFlag =
+    ["ar", "he", "dv", "ckb", "ps", "fa", "sd", "ur", "ug", "yi"].filter(
+      (lang) => {
+        return lang === outputLanguage.value;
+      }
+    ).length > 0;
+
   const handlePdfDownload = () => {
     //code to download a pdf file
 
-    Font.register({
-      family: "Noto Sans",
-      format: "truetype",
-      src: NotoSansBold,
-    });
+    let font;
 
-    const styles = StyleSheet.create({
-      body: {
-        padding: "20px",
-      },
-      data: {
-        fontFamily: "Noto Sans",
-        position: "relative",
-      },
-      logo: {
-        height: "48px",
-        width: "253px",
-      },
-    });
+    if (outputLanguage.value === "ja") {
+      font = "Noto Sans Japanese";
+    } else if (outputLanguage.value === "ko") {
+      font = "Noto Sans Korean";
+    } else if (outputLanguage.value === "zh-TW") {
+      font = "Noto Sans Traditional Chinese";
+    } else if (outputLanguage.value === "zh-CN") {
+      font = "Noto Sans Simplified Chinese";
+    } else if (outputLanguage.value === "th") {
+      font = "Noto Sans Thai";
+    } else if (outputLanguage.value === "ta") {
+      font = "Noto Sans Tamil";
+    } else if (outputLanguage.value === "ml") {
+      font = "Noto Sans Malayalam";
+    } else if (outputLanguage.value === "he" || outputLanguage.value === "yi") {
+      font = "Noto Sans Hebrew";
+    } else if (outputLanguage.value === "bn" || outputLanguage.value === "as") {
+      font = "Noto Sans Bengali";
+    } else if (outputLanguage.value === "ka") {
+      font = "Noto Sans Georgian";
+    } else if (outputLanguage.value === "si") {
+      font = "Noto Sans Sinhala";
+    } else if (outputLanguage.value === "te") {
+      font = "Noto Sans Telugu";
+    } else if (outputLanguage.value === "hy") {
+      font = "Noto Sans Armenian";
+    } else if (outputLanguage.value === "kn") {
+      font = "Noto Sans Kannada";
+    } else if (outputLanguage.value === "km") {
+      font = "Noto Sans Khmer";
+    } else if (outputLanguage.value === "or") {
+      font = "Noto Sans Oriya";
+    } else if (outputLanguage.value === "gu") {
+      font = "Noto Sans Gujarati";
+    } else if (outputLanguage.value === "dv") {
+      font = "Noto Sans Thaana";
+    } else if (outputLanguage.value === "lo") {
+      font = "Noto Sans Lao";
+    } else if (outputLanguage.value === "my") {
+      font = "Noto Sans Myanmar";
+    } else if (outputLanguage.value === "am" || outputLanguage.value === "ti") {
+      font = "Noto Sans Ethiopic";
+    } else if (
+      outputLanguage.value === "ar" ||
+      outputLanguage.value === "sd" ||
+      outputLanguage.value === "ug" ||
+      outputLanguage.value === "ckb" ||
+      outputLanguage.value === "ur" ||
+      outputLanguage.value === "ps" ||
+      outputLanguage.value === "fa"
+    ) {
+      font = "Noto Sans Arabic";
+    } else if (outputLanguage.value === "mni-Mtei") {
+      font = "Noto Sans Meetei Mayek";
+    } else if (outputLanguage.value === "pa") {
+      font = "Noto Sans Gurmukhi";
+    } else {
+      font = "Noto Sans";
+    }
 
-    const doc = (
-      <PDFDocument>
-        <Page>
-          <View style={styles.body}>
-            <Image src={wordsack} style={styles.logo} />
-            <Text style={styles.data}>
-              {"\n~             "}
-              {translated}
-            </Text>
-          </View>
-        </Page>
-      </PDFDocument>
-    );
-    pdf(doc)
+    console.log(font);
+
+    pdf(PdfDoc({ translated, font, rightFlag, inputLanguage, outputLanguage }))
       .toBlob()
       .then(function (blob) {
         const url = URL.createObjectURL(blob);
@@ -210,6 +238,7 @@ const Translate = () => {
                   text: `\t${translated}`,
                 }),
               ],
+              alignment: rightFlag ? "right" : "left",
             }),
           ],
         },
@@ -230,7 +259,7 @@ const Translate = () => {
       animate={{ scale: 1, opacity: 1 }}
       transition={{
         type: "spring",
-        stiffness: 260,
+        stiffness: 170,
         damping: 20,
       }}
       exit={{ scale: 1.15, opacity: 0 }}

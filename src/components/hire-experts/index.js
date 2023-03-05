@@ -97,7 +97,7 @@ function HireExperts() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{
           type: "spring",
-          stiffness: 260,
+          stiffness: 170,
           damping: 20,
         }}
         exit={{ scale: 1.15, opacity: 0 }}

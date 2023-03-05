@@ -11,8 +11,8 @@ import {
   Link,
   Image,
 } from "@react-pdf/renderer";
-import NotoSans from "../../common/NotoSans-Regular.ttf";
-import NotoSansBold from "../../common/NotoSans-Bold.ttf";
+import NotoSans from "../../common/fonts/NotoSans-Regular.ttf";
+import NotoSansBold from "../../common/fonts/NotoSans-Bold.ttf";
 import wordsack from "../../wordsack.png";
 
 Font.register({
