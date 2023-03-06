@@ -189,6 +189,7 @@ Font.register({
 
 const styles = StyleSheet.create({
   body: {
+    margin: "20px",
     padding: "20px",
     textAlign: "center",
   },
@@ -202,8 +203,10 @@ const styles = StyleSheet.create({
   },
   font: {
     position: "absolute",
-    bottom: "10px",
-    right: "5px",
+    bottom: "0px",
+    marginBottom: "20px",
+    right: "0px",
+    marginRight: "20px",
     fontFamily: "Noto Sans",
     fontSize: "8px",
   },
@@ -237,8 +240,8 @@ export const PdfDoc = ({
           }
         >
           {!rightFlag && "\n~             "}
+          {rightFlag && "\n"}
           {translated}
-          {rightFlag && "             ~\n"}
         </Text>
       </View>
       <View style={styles.font}>

@@ -46,6 +46,7 @@ function Convert({ language, text, translated, setTranslated }) {
             q: debouncedText,
             target: language.value,
             key: `${process.env.REACT_APP_GOOGLE_TRANSLATE_KEY}`,
+            format: "text", // specify text format
           },
         }
       );
